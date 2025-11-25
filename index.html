@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KRIFIKS - Bukan Keripik Biasa</title>
+    
+    <!-- Tailwind CSS (Biar desainnya bagus tanpa ribet CSS manual) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Keren (Lilita One & Poppins) -->
+    <link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Ikon (FontAwesome) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #FFF8E1; /* Warna Krem Muda */
+        }
+        h1, h2, h3, .brand-font {
+            font-family: 'Lilita One', cursive;
+        }
+        .krifiks-red { background-color: #D32F2F; }
+        .krifiks-yellow { color: #FFCA28; }
+        .krifiks-btn { background-color: #FFA000; }
+        .wa-btn { background-color: #25D366; }
+    </style>
+</head>
+<body class="text-gray-700">
+
+    <!-- Navbar -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="text-2xl text-red-700 brand-font tracking-wider">KRIFIKS</div>
+            <a href="https://www.instagram.com/krifiks.id" target="_blank" class="text-gray-500 hover:text-red-600 transition">
+                <i class="fab fa-instagram text-2xl"></i>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="krifiks-red text-white py-16 px-4 text-center rounded-b-[3rem] shadow-xl relative overflow-hidden">
+        <div class="container mx-auto relative z-10">
+            <!-- Logo -->
+            <img src="assets/logo.png" alt="Logo Krifiks" class="h-40 mx-auto mb-6 drop-shadow-lg hover:scale-105 transition duration-300">
+            
+            <h1 class="text-5xl md:text-7xl mb-2 drop-shadow-md">KRIFIKS</h1>
+            <p class="text-xl md:text-2xl font-semibold krifiks-yellow tracking-widest mb-6">BUKAN KERIPIK BIASA</p>
+            <p class="text-lg md:text-xl max-w-2xl mx-auto text-red-100 leading-relaxed">
+                Camilan premium dari bahan baku lokal Tebing Tinggi yang diolah dengan rasa kekinian, pas buat Gen-Z!
+            </p>
+        </div>
+    </section>
+
+    <!-- Produk Section -->
+    <section class="container mx-auto px-6 py-16">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl text-gray-800 mb-2">Produk Andalan</h2>
+            <div class="h-1 w-24 krifiks-btn mx-auto rounded-full"></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Card 1 -->
+            <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition border-t-4 border-orange-300">
+                <div class="bg-orange-100 w-12 h-12 rounded-full flex items-center justify-center mb-4">
+                    <i class="fas fa-leaf text-orange-500 text-xl"></i>
+                </div>
+                <h3 class="text-xl mb-2">Keripik Singkong</h3>
+                <p class="text-sm text-gray-500">Tekstur super renyah dengan cita rasa gurih yang jadi kanvas sempurna.</p>
+            </div>
+            <!-- Card 2 -->
+            <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition border-t-4 border-green-300">
+                <div class="bg-green-100 w-12 h-12 rounded-full flex items-center justify-center mb-4">
+                    <i class="fas fa-tree text-green-500 text-xl"></i>
+                </div>
+                <h3 class="text-xl mb-2">Keripik Sukun</h3>
+                <p class="text-sm text-gray-500">Tekstur unik, sedikit padat namun rapuh, dengan manis alami sukun.</p>
+            </div>
+            <!-- Card 3 -->
+            <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition border-t-4 border-yellow-300">
+                <div class="bg-yellow-100 w-12 h-12 rounded-full flex items-center justify-center mb-4">
+                    <i class="fas fa-lemon text-yellow-500 text-xl"></i>
+                </div>
+                <h3 class="text-xl mb-2">Keripik Pisang</h3>
+                <p class="text-sm text-gray-500">Manis legit pisang pilihan berpadu harmonis dengan bumbu gurih.</p>
+            </div>
+            <!-- Card 4 -->
+            <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition border-t-4 border-red-300">
+                <div class="bg-red-100 w-12 h-12 rounded-full flex items-center justify-center mb-4">
+                    <i class="fas fa-fire text-red-500 text-xl"></i>
+                </div>
+                <h3 class="text-xl mb-2">Varian Hits</h3>
+                <p class="text-sm text-gray-500">Balado, Jagung Bakar, dan Original dengan Saus Glaze (Matcha, Tiramisu).</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- USP Section (Keunggulan) -->
+    <section class="bg-white py-16">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl text-gray-800 mb-2">Kenapa Krifiks Beda?</h2>
+                <div class="h-1 w-24 krifiks-btn mx-auto rounded-full"></div>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div>
+                    <i class="fas fa-map-marker-alt text-4xl text-yellow-500 mb-4"></i>
+                    <h4 class="font-bold text-lg">Lokal Terbaik</h4>
+                    <p class="text-xs text-gray-500 mt-2">Dari petani Tebing Tinggi</p>
+                </div>
+                <div>
+                    <i class="fas fa-magic text-4xl text-yellow-500 mb-4"></i>
+                    <h4 class="font-bold text-lg">Inovasi Rasa</h4>
+                    <p class="text-xs text-gray-500 mt-2">Saus glaze yang unik</p>
+                </div>
+                <div>
+                    <i class="fas fa-check-circle text-4xl text-yellow-500 mb-4"></i>
+                    <h4 class="font-bold text-lg">Pasti Renyah</h4>
+                    <p class="text-xs text-gray-500 mt-2">Teknik goreng modern</p>
+                </div>
+                <div>
+                    <i class="fas fa-shield-heart text-4xl text-yellow-500 mb-4"></i>
+                    <h4 class="font-bold text-lg">Tanpa Pengawet</h4>
+                    <p class="text-xs text-gray-500 mt-2">Aman & Sehat</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galeri Section -->
+    <section class="container mx-auto px-6 py-16">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl text-gray-800 mb-2">Galeri Krifiks</h2>
+            <div class="h-1 w-24 krifiks-btn mx-auto rounded-full"></div>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <!-- Gambar 1 -->
+            <div class="group relative rounded-xl overflow-hidden shadow-lg aspect-[4/5]">
+                <img src="assets/produk_balado.png" alt="Balado" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" onerror="this.src='https://placehold.co/400x500?text=Foto+Produk';">
+                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
+                    <p class="text-white text-sm font-bold">Balado Pedas</p>
+                </div>
+            </div>
+             <!-- Gambar 2 -->
+             <div class="group relative rounded-xl overflow-hidden shadow-lg aspect-[4/5]">
+                <img src="assets/produk_jagung.png" alt="Jagung" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" onerror="this.src='https://placehold.co/400x500?text=Foto+Produk';">
+                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
+                    <p class="text-white text-sm font-bold">Jagung Bakar</p>
+                </div>
+            </div>
+             <!-- Gambar 3 -->
+             <div class="group relative rounded-xl overflow-hidden shadow-lg aspect-[4/5]">
+                <img src="assets/produk_glaze.png" alt="Glaze" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" onerror="this.src='https://placehold.co/400x500?text=Foto+Produk';">
+                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
+                    <p class="text-white text-sm font-bold">Saus Glaze</p>
+                </div>
+            </div>
+             <!-- Gambar 4 -->
+             <div class="group relative rounded-xl overflow-hidden shadow-lg aspect-[4/5]">
+                <img src="assets/produk_kemasan.png" alt="Kemasan" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" onerror="this.src='https://placehold.co/400x500?text=Foto+Produk';">
+                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
+                    <p class="text-white text-sm font-bold">Kemasan Premium</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call To Action (Pesan) -->
+    <section class="bg-gray-100 py-16 text-center">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-4 text-gray-800">Penasaran?</h2>
+            <p class="text-gray-600 mb-8 max-w-lg mx-auto">Langsung kepoin dan pesan KRIFIKS sekarang. Jangan sampai kehabisan stok hari ini!</p>
+            
+            <div class="flex flex-col md:flex-row justify-center gap-4">
+                <!-- Tombol WhatsApp -->
+                <a href="https://wa.me/6285275088405?text=Halo%20Krifiks,%20saya%20mau%20pesan%20keripiknya%20dong!" target="_blank" class="wa-btn text-white px-8 py-3 rounded-full font-bold shadow-lg hover:shadow-xl transition flex items-center justify-center gap-2 transform hover:-translate-y-1">
+                    <i class="fab fa-whatsapp text-xl"></i> Pesan via WhatsApp
+                </a>
+                
+                <!-- Tombol Instagram -->
+                <a href="https://www.instagram.com/krifiks.id" target="_blank" class="bg-white text-gray-800 border-2 border-gray-200 px-8 py-3 rounded-full font-bold hover:bg-gray-50 transition flex items-center justify-center gap-2">
+                    <i class="fab fa-instagram text-xl text-pink-600"></i> Cek Instagram
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8 text-center">
+        <div class="flex justify-center space-x-6 mb-4">
+            <a href="#" class="hover:text-yellow-400 transition"><i class="fab fa-tiktok text-xl"></i></a>
+            <a href="#" class="hover:text-yellow-400 transition"><i class="fab fa-instagram text-xl"></i></a>
+            <a href="#" class="hover:text-yellow-400 transition"><i class="fab fa-whatsapp text-xl"></i></a>
+        </div>
+        <p class="text-sm text-gray-400">© 2025 KRIFIKS - Tebing Tinggi, Sumatera Utara.</p>
+    </footer>
+
+</body>
+</html>
