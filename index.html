@@ -21,7 +21,7 @@
         body {
             font-family: 'Poppins', sans-serif;
             background-color: #FFF8E1;
-            overflow-x: hidden; /* Mencegah scroll samping */
+            overflow-x: hidden;
         }
         h1, h2, h3, .brand-font {
             font-family: 'Lilita One', cursive;
@@ -30,7 +30,6 @@
         .krifiks-yellow { color: #FFCA28; }
         .krifiks-btn { background-color: #FFA000; }
         
-        /* Pola background halus untuk Hero */
         .hero-pattern {
             background-image: radial-gradient(#FFCA28 15%, transparent 16%), radial-gradient(#FFCA28 15%, transparent 16%);
             background-size: 60px 60px;
@@ -38,7 +37,6 @@
             opacity: 0.1;
         }
         
-        /* Animasi Tombol WA */
         @keyframes pulse-custom {
             0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
             70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(37, 211, 102, 0); }
@@ -48,12 +46,20 @@
             animation: pulse-custom 2s infinite;
         }
 
-        /* Style untuk FAQ Accordion */
         details > summary {
             list-style: none;
         }
         details > summary::-webkit-details-marker {
             display: none;
+        }
+
+        /* Style untuk Scrollbar di Modal Katalog */
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
         }
     </style>
 </head>
@@ -63,8 +69,6 @@
     <nav class="bg-white/90 backdrop-blur-md shadow-md sticky top-0 z-50 transition-all duration-300">
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
             <a href="#" class="text-2xl text-red-700 brand-font tracking-wider hover:scale-105 transition">KRIFIKS</a>
-            
-            <!-- Menu Desktop -->
             <div class="hidden md:flex space-x-6 items-center font-semibold">
                 <a href="#produk" class="hover:text-red-600 transition">Produk</a>
                 <a href="#keunggulan" class="hover:text-red-600 transition">Keunggulan</a>
@@ -74,14 +78,10 @@
                     <i class="fab fa-instagram text-2xl"></i>
                 </a>
             </div>
-
-            <!-- Menu Mobile Button -->
             <button id="mobile-menu-btn" class="md:hidden text-gray-700 focus:outline-none">
                 <i class="fas fa-bars text-2xl"></i>
             </button>
         </div>
-
-        <!-- Menu Mobile Dropdown -->
         <div id="mobile-menu" class="hidden md:hidden bg-white border-t p-4 flex flex-col space-y-3 font-semibold shadow-lg">
             <a href="#produk" class="block hover:text-red-600">Produk</a>
             <a href="#keunggulan" class="block hover:text-red-600">Keunggulan</a>
@@ -92,22 +92,16 @@
 
     <!-- Hero Section -->
     <section class="krifiks-red text-white py-20 px-4 text-center rounded-b-[3rem] shadow-xl relative overflow-hidden">
-        <!-- Background Pattern -->
         <div class="absolute inset-0 hero-pattern"></div>
-        
         <div class="container mx-auto relative z-10" data-aos="fade-down" data-aos-duration="1000">
-            <!-- Logo -->
             <img src="assets/logo_krifiks_final.png" alt="Logo Krifiks" class="h-48 mx-auto mb-6 drop-shadow-2xl hover:scale-110 transition duration-500 cursor-pointer">
-            
             <h1 class="text-5xl md:text-8xl mb-2 drop-shadow-lg tracking-wide">KRIFIKS</h1>
             <div class="inline-block bg-white/10 px-6 py-2 rounded-full backdrop-blur-sm mb-6 transform rotate-1 hover:rotate-0 transition">
                 <p class="text-xl md:text-2xl font-semibold krifiks-yellow tracking-widest">BUKAN KERIPIK BIASA</p>
             </div>
-            
             <p class="text-lg md:text-xl max-w-2xl mx-auto text-red-50 leading-relaxed opacity-90 mb-8">
                 Camilan premium dari bahan baku lokal <span class="font-bold text-yellow-300">Tebing Tinggi</span> yang diolah dengan rasa kekinian, pas buat Gen-Z!
             </p>
-
             <a href="#produk" class="inline-block bg-yellow-400 text-red-800 font-bold py-3 px-8 rounded-full shadow-lg hover:bg-yellow-300 hover:shadow-xl transition transform hover:-translate-y-1">
                 Cobain Sekarang <i class="fas fa-arrow-down ml-2"></i>
             </a>
@@ -121,9 +115,7 @@
             <div class="h-1.5 w-24 krifiks-btn mx-auto rounded-full"></div>
             <p class="mt-4 text-gray-500">Pilih varian favoritmu, dijamin nagih!</p>
         </div>
-
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <!-- Card 1 -->
             <div class="bg-white p-6 rounded-3xl shadow-lg hover:shadow-2xl transition duration-300 border-b-8 border-orange-400 group" data-aos="fade-up" data-aos-delay="100">
                 <div class="bg-orange-100 w-14 h-14 rounded-full flex items-center justify-center mb-6 group-hover:bg-orange-400 transition">
                     <i class="fas fa-leaf text-orange-500 text-2xl group-hover:text-white transition"></i>
@@ -131,7 +123,6 @@
                 <h3 class="text-2xl mb-2 text-gray-800">Keripik Singkong</h3>
                 <p class="text-sm text-gray-500 leading-relaxed">Tekstur super renyah dengan cita rasa gurih yang jadi kanvas sempurna.</p>
             </div>
-            <!-- Card 2 -->
             <div class="bg-white p-6 rounded-3xl shadow-lg hover:shadow-2xl transition duration-300 border-b-8 border-green-400 group" data-aos="fade-up" data-aos-delay="200">
                 <div class="bg-green-100 w-14 h-14 rounded-full flex items-center justify-center mb-6 group-hover:bg-green-400 transition">
                     <i class="fas fa-tree text-green-500 text-2xl group-hover:text-white transition"></i>
@@ -139,7 +130,6 @@
                 <h3 class="text-2xl mb-2 text-gray-800">Keripik Sukun</h3>
                 <p class="text-sm text-gray-500 leading-relaxed">Tekstur unik, sedikit padat namun rapuh, dengan manis alami sukun.</p>
             </div>
-            <!-- Card 3 -->
             <div class="bg-white p-6 rounded-3xl shadow-lg hover:shadow-2xl transition duration-300 border-b-8 border-yellow-400 group" data-aos="fade-up" data-aos-delay="300">
                 <div class="bg-yellow-100 w-14 h-14 rounded-full flex items-center justify-center mb-6 group-hover:bg-yellow-400 transition">
                     <i class="fas fa-lemon text-yellow-600 text-2xl group-hover:text-white transition"></i>
@@ -147,7 +137,6 @@
                 <h3 class="text-2xl mb-2 text-gray-800">Keripik Pisang</h3>
                 <p class="text-sm text-gray-500 leading-relaxed">Manis legit pisang pilihan berpadu harmonis dengan bumbu gurih.</p>
             </div>
-            <!-- Card 4 -->
             <div class="bg-white p-6 rounded-3xl shadow-lg hover:shadow-2xl transition duration-300 border-b-8 border-red-500 group" data-aos="fade-up" data-aos-delay="400">
                 <div class="bg-red-100 w-14 h-14 rounded-full flex items-center justify-center mb-6 group-hover:bg-red-500 transition">
                     <i class="fas fa-fire text-red-500 text-2xl group-hover:text-white transition"></i>
@@ -158,18 +147,16 @@
         </div>
     </section>
 
-    <!-- USP Section (Keunggulan) -->
+    <!-- USP Section -->
     <section id="keunggulan" class="bg-white py-20 relative overflow-hidden">
         <div class="absolute -right-20 top-20 text-9xl text-gray-100 opacity-50 rotate-12 pointer-events-none">
             <i class="fas fa-star"></i>
         </div>
-        
         <div class="container mx-auto px-6 relative z-10">
             <div class="text-center mb-16" data-aos="zoom-in">
                 <h2 class="text-3xl md:text-5xl text-gray-800 mb-2">Kenapa Krifiks Beda?</h2>
                 <div class="h-1.5 w-24 krifiks-btn mx-auto rounded-full"></div>
             </div>
-            
             <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
                 <div data-aos="fade-up" data-aos-delay="100" class="hover:-translate-y-2 transition duration-300">
                     <div class="w-20 h-20 mx-auto bg-yellow-100 rounded-full flex items-center justify-center mb-4">
@@ -203,16 +190,14 @@
         </div>
     </section>
 
-    <!-- Testimoni Section (Baru) -->
+    <!-- Testimoni Section -->
     <section class="container mx-auto px-6 py-20">
         <div class="text-center mb-12" data-aos="fade-up">
             <h2 class="text-3xl md:text-5xl text-gray-800 mb-2">Kata Mereka</h2>
             <div class="h-1.5 w-24 krifiks-btn mx-auto rounded-full"></div>
             <p class="mt-4 text-gray-500">Apa kata sobat Krifiks?</p>
         </div>
-
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <!-- Testi 1 -->
             <div class="bg-white p-6 rounded-2xl shadow border border-gray-100" data-aos="flip-left" data-aos-delay="100">
                 <div class="flex text-yellow-400 mb-3 text-sm">
                     <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
@@ -220,7 +205,6 @@
                 <p class="text-gray-600 italic mb-4">"Gila sih glaze Tiramisu-nya, kirain bakal aneh taunya enak banget! Renyahnya dapet."</p>
                 <div class="font-bold text-gray-800">- Dinda, Mahasiswi</div>
             </div>
-            <!-- Testi 2 -->
             <div class="bg-white p-6 rounded-2xl shadow border border-gray-100" data-aos="flip-left" data-aos-delay="200">
                 <div class="flex text-yellow-400 mb-3 text-sm">
                     <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
@@ -228,7 +212,6 @@
                 <p class="text-gray-600 italic mb-4">"Oleh-oleh wajib kalau ke Tebing Tinggi. Baladonya pedesnya pas, nggak bikin batuk."</p>
                 <div class="font-bold text-gray-800">- Raka, Traveler</div>
             </div>
-            <!-- Testi 3 -->
             <div class="bg-white p-6 rounded-2xl shadow border border-gray-100" data-aos="flip-left" data-aos-delay="300">
                 <div class="flex text-yellow-400 mb-3 text-sm">
                     <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
@@ -239,7 +222,7 @@
         </div>
     </section>
 
-    <!-- Galeri Section -->
+    <!-- Galeri Section (Updated with Modal Triggers) -->
     <section id="galeri" class="container mx-auto px-6 py-10 mb-10">
         <div class="text-center mb-12" data-aos="fade-up">
             <h2 class="text-3xl md:text-5xl text-gray-800 mb-2">Galeri Krifiks</h2>
@@ -247,9 +230,9 @@
         </div>
 
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <!-- Gambar 1 -->
-            <div class="group relative rounded-xl overflow-hidden shadow-lg aspect-[4/5] cursor-pointer" data-aos="zoom-in" data-aos-delay="100">
-                <img src="assets/balado.jpg" alt="Balado" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" onerror="this.src='https://placehold.co/400x500?text=Foto+Produk';">
+            <!-- Gambar 1 (Single View) -->
+            <div onclick="openSingleModal('assets/balado.jpg', 'Balado Pedas')" class="group relative rounded-xl overflow-hidden shadow-lg aspect-[4/5] cursor-pointer" data-aos="zoom-in" data-aos-delay="100">
+                <img src="assets/balado.jpg" alt="Balado" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" onerror="this.src='https://placehold.co/400x500?text=Foto+Produk';">
                 <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
                     <p class="text-white font-bold border-2 border-white px-4 py-1 rounded-full">Lihat</p>
                 </div>
@@ -257,9 +240,9 @@
                     <p class="text-white text-sm font-bold">Balado Pedas</p>
                 </div>
             </div>
-             <!-- Gambar 2 -->
-             <div class="group relative rounded-xl overflow-hidden shadow-lg aspect-[4/5] cursor-pointer" data-aos="zoom-in" data-aos-delay="200">
-                <img src="assets/jagung_bakar.jpg" alt="Jagung" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" onerror="this.src='https://placehold.co/400x500?text=Foto+Produk';">
+             <!-- Gambar 2 (Single View) -->
+             <div onclick="openSingleModal('assets/jagung_bakar.jpg', 'Jagung Bakar')" class="group relative rounded-xl overflow-hidden shadow-lg aspect-[4/5] cursor-pointer" data-aos="zoom-in" data-aos-delay="200">
+                <img src="assets/jagung_bakar.jpg" alt="Jagung" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" onerror="this.src='https://placehold.co/400x500?text=Foto+Produk';">
                 <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
                     <p class="text-white font-bold border-2 border-white px-4 py-1 rounded-full">Lihat</p>
                 </div>
@@ -267,9 +250,9 @@
                     <p class="text-white text-sm font-bold">Jagung Bakar</p>
                 </div>
             </div>
-             <!-- Gambar 3 -->
-             <div class="group relative rounded-xl overflow-hidden shadow-lg aspect-[4/5] cursor-pointer" data-aos="zoom-in" data-aos-delay="300">
-                <img src="assets/tiramisu.jpg" alt="Glaze" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" onerror="this.src='https://placehold.co/400x500?text=Foto+Produk';">
+             <!-- Gambar 3 (Single View) -->
+             <div onclick="openSingleModal('assets/tiramisu.jpg', 'Saus Glaze Tiramisu')" class="group relative rounded-xl overflow-hidden shadow-lg aspect-[4/5] cursor-pointer" data-aos="zoom-in" data-aos-delay="300">
+                <img src="assets/tiramisu.jpg" alt="Glaze" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" onerror="this.src='https://placehold.co/400x500?text=Foto+Produk';">
                 <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
                     <p class="text-white font-bold border-2 border-white px-4 py-1 rounded-full">Lihat</p>
                 </div>
@@ -277,27 +260,26 @@
                     <p class="text-white text-sm font-bold">Saus Glaze</p>
                 </div>
             </div>
-             <!-- Gambar 4 -->
-             <div class="group relative rounded-xl overflow-hidden shadow-lg aspect-[4/5] cursor-pointer" data-aos="zoom-in" data-aos-delay="400">
-                <img src="assets/Premium Krifiks Pack.jpg" alt="Kemasan" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" onerror="this.src='https://placehold.co/400x500?text=Foto+Produk';">
+             <!-- Gambar 4 (CATALOGUE MODE) -->
+             <div onclick="openCatalogModal()" class="group relative rounded-xl overflow-hidden shadow-lg aspect-[4/5] cursor-pointer" data-aos="zoom-in" data-aos-delay="400">
+                <img src="assets/premium_krifiks_pack.jpg" alt="Kemasan" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" onerror="this.src='https://placehold.co/400x500?text=Foto+Produk';">
                 <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
-                    <p class="text-white font-bold border-2 border-white px-4 py-1 rounded-full">Lihat</p>
+                    <p class="text-white font-bold border-2 border-white px-4 py-1 rounded-full">Lihat Katalog</p>
                 </div>
                 <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
-                    <p class="text-white text-sm font-bold">Kemasan Premium</p>
+                    <p class="text-white text-sm font-bold">Katalog Lengkap</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- FAQ Section (Baru & Interaktif) -->
+    <!-- FAQ Section -->
     <section id="faq" class="bg-white py-16">
         <div class="container mx-auto px-6 max-w-3xl">
             <div class="text-center mb-10" data-aos="fade-up">
                 <h2 class="text-3xl font-bold text-gray-800">Sering Ditanyakan (FAQ)</h2>
                 <div class="h-1 w-16 krifiks-btn mx-auto rounded-full mt-2"></div>
             </div>
-
             <div class="space-y-4" data-aos="fade-up" data-aos-delay="100">
                 <details class="group bg-orange-50 p-4 rounded-xl cursor-pointer">
                     <summary class="flex justify-between items-center font-bold text-gray-800">
@@ -308,7 +290,6 @@
                         Tentu saja! Semua bahan baku Krifiks dijamin halal dan diproses secara higienis tanpa bahan-bahan non-halal.
                     </p>
                 </details>
-
                 <details class="group bg-orange-50 p-4 rounded-xl cursor-pointer">
                     <summary class="flex justify-between items-center font-bold text-gray-800">
                         Berapa lama keripik tahan?
@@ -318,7 +299,6 @@
                         Dengan kemasan ziplock premium kami, Krifiks bisa tahan renyah hingga 3-4 bulan jika belum dibuka, dan 1 minggu setelah dibuka (asal ditutup rapat lagi ya!).
                     </p>
                 </details>
-
                 <details class="group bg-orange-50 p-4 rounded-xl cursor-pointer">
                     <summary class="flex justify-between items-center font-bold text-gray-800">
                         Bisa kirim ke luar kota?
@@ -332,16 +312,14 @@
         </div>
     </section>
 
-    <!-- Call To Action (Pesan) -->
+    <!-- CTA Section -->
     <section class="bg-gray-800 py-20 text-center relative overflow-hidden">
         <div class="container mx-auto px-4 relative z-10">
             <h2 class="text-3xl md:text-4xl font-bold mb-4 text-white" data-aos="fade-up">Siap Ngemil Enak?</h2>
             <p class="text-gray-400 mb-10 max-w-lg mx-auto" data-aos="fade-up" data-aos-delay="100">
                 Langsung kepoin dan pesan KRIFIKS sekarang. Jangan sampai kehabisan stok hari ini!
             </p>
-            
             <div class="flex flex-col md:flex-row justify-center gap-4" data-aos="zoom-in" data-aos-delay="200">
-                <!-- Tombol WhatsApp -->
                 <a href="https://wa.me/6285275088405?text=Halo%20Krifiks,%20saya%20mau%20pesan%20keripiknya%20dong!" target="_blank" class="wa-btn text-white px-8 py-4 rounded-full font-bold shadow-lg hover:shadow-green-500/50 transition flex items-center justify-center gap-3 transform hover:-translate-y-1 text-lg">
                     <i class="fab fa-whatsapp text-2xl"></i> Pesan Sekarang
                 </a>
@@ -359,27 +337,120 @@
         <p class="text-xs text-gray-500">© 2025 KRIFIKS - UMKM Tebing Tinggi, Sumatera Utara.</p>
     </footer>
 
-    <!-- Floating WhatsApp Button (Fixed) -->
+    <!-- Floating WhatsApp -->
     <a href="https://wa.me/6285275088405?text=Halo%20Krifiks,%20saya%20mau%20tanya-tanya%20dong!" target="_blank" class="fixed bottom-6 right-6 bg-green-500 text-white p-4 rounded-full shadow-2xl hover:bg-green-600 transition z-50 wa-float flex items-center justify-center">
         <i class="fab fa-whatsapp text-4xl"></i>
     </a>
 
+    <!-- MODAL LIGHTBOX (Rahasia) -->
+    <div id="imageModal" class="fixed inset-0 z-[100] hidden bg-black/95 flex justify-center items-center p-4 backdrop-blur-sm transition-opacity duration-300" onclick="closeModalOnOutside(event)">
+        <!-- Tombol Close -->
+        <button onclick="closeModal()" class="absolute top-5 right-5 text-white text-5xl hover:text-red-500 transition focus:outline-none">&times;</button>
+        
+        <div id="modalContent" class="max-w-5xl w-full max-h-[90vh] overflow-y-auto scrollbar-hide rounded-2xl relative">
+            
+            <!-- Tampilan 1: Gambar Tunggal -->
+            <div id="singleImageView" class="hidden text-center">
+                <img id="modalImage" src="" class="max-h-[80vh] mx-auto rounded-lg shadow-2xl object-contain">
+                <h3 id="modalTitle" class="text-white text-xl mt-4 font-bold tracking-wide"></h3>
+            </div>
+
+            <!-- Tampilan 2: Katalog Produk (Untuk Gambar 4) -->
+            <div id="catalogView" class="hidden bg-white rounded-2xl p-6">
+                <h2 class="text-3xl font-bold text-gray-800 mb-2 text-center brand-font">Katalog KRIFIKS</h2>
+                <div class="h-1 w-20 bg-orange-500 mx-auto rounded-full mb-6"></div>
+                
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <!-- Item 1 -->
+                    <div class="text-center group">
+                        <div class="rounded-xl overflow-hidden shadow mb-2 aspect-square">
+                            <img src="assets/balado.jpg" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        </div>
+                        <p class="font-bold text-gray-700 text-sm">Balado Pedas</p>
+                    </div>
+                    <!-- Item 2 -->
+                    <div class="text-center group">
+                        <div class="rounded-xl overflow-hidden shadow mb-2 aspect-square">
+                            <img src="assets/jagung_bakar.jpg" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        </div>
+                        <p class="font-bold text-gray-700 text-sm">Jagung Bakar</p>
+                    </div>
+                    <!-- Item 3 -->
+                    <div class="text-center group">
+                        <div class="rounded-xl overflow-hidden shadow mb-2 aspect-square">
+                            <img src="assets/tiramisu.jpg" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        </div>
+                        <p class="font-bold text-gray-700 text-sm">Tiramisu Glaze</p>
+                    </div>
+                     <!-- Item 4 -->
+                     <div class="text-center group">
+                        <div class="rounded-xl overflow-hidden shadow mb-2 aspect-square">
+                            <img src="assets/premium_krifiks_pack.jpg" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        </div>
+                        <p class="font-bold text-gray-700 text-sm">Paket Premium</p>
+                    </div>
+                </div>
+                
+                <div class="mt-8 text-center">
+                    <a href="https://wa.me/6285275088405" target="_blank" class="inline-block bg-green-500 text-white px-6 py-2 rounded-full font-bold hover:bg-green-600 transition">
+                        <i class="fab fa-whatsapp mr-2"></i> Pesan Semua Varian
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
     <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // Inisialisasi Animasi AOS
-        AOS.init({
-            once: true, // Animasi cuma sekali pas scroll ke bawah
-            offset: 100, // Mulai animasi sedikit sebelum elemen muncul
-        });
+        AOS.init({ once: true, offset: 100 });
 
-        // Script untuk Mobile Menu (Hamburger)
         const btn = document.getElementById('mobile-menu-btn');
         const menu = document.getElementById('mobile-menu');
-
         btn.addEventListener('click', () => {
             menu.classList.toggle('hidden');
         });
+
+        // --- LOGIC MODAL (LIGHTBOX) ---
+        const modal = document.getElementById('imageModal');
+        const singleView = document.getElementById('singleImageView');
+        const catalogView = document.getElementById('catalogView');
+        const modalImg = document.getElementById('modalImage');
+        const modalTitle = document.getElementById('modalTitle');
+
+        // Buka Modal Gambar Tunggal
+        function openSingleModal(imgSrc, title) {
+            singleView.classList.remove('hidden');
+            catalogView.classList.add('hidden');
+            
+            modalImg.src = imgSrc;
+            modalTitle.innerText = title;
+            
+            modal.classList.remove('hidden');
+        }
+
+        // Buka Modal Katalog (Khusus Gambar 4)
+        function openCatalogModal() {
+            singleView.classList.add('hidden');
+            catalogView.classList.remove('hidden');
+            
+            modal.classList.remove('hidden');
+        }
+
+        // Tutup Modal
+        function closeModal() {
+            modal.classList.add('hidden');
+            // Reset src biar gak flickering pas dibuka lagi
+            setTimeout(() => { modalImg.src = ''; }, 200);
+        }
+
+        // Tutup kalau klik di luar area gambar
+        function closeModalOnOutside(event) {
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
     </script>
 
 </body>
