@@ -3,523 +3,433 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KRIFIKS - Bukan Keripik Biasa</title>
+    <title>Tenun ASKA - Warisan Ulos Batak Tradisional</title>
     
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Font Keren -->
-    <link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
     
-    <!-- Ikon (FontAwesome) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <!-- Animasi Scroll (AOS) -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <style>
+        /* --- DESIGN SYSTEM TENUN ASKA --- */
+        :root {
+            --maroon-aska: #7D1C25; /* Merah Hati Gelap */
+            --gold-aska: #C5A059;   /* Emas Antik */
+            --black-aska: #1A1A1A;  /* Hitam Arang */
+            --cream-aska: #F9F7F2;  /* Putih Tulang */
+        }
+
         body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #FFF8E1;
-            overflow-x: hidden; /* Mencegah scroll samping */
+            font-family: 'Lato', sans-serif;
+            background-color: var(--cream-aska);
+            color: var(--black-aska);
+            overflow-x: hidden;
         }
-        h1, h2, h3, .brand-font {
-            font-family: 'Lilita One', cursive;
+
+        h1, h2, h3, .serif-font {
+            font-family: 'Playfair Display', serif;
         }
-        .krifiks-red { background-color: #DA291C; } 
-        .krifiks-yellow { color: #FFCA28; }
-        .krifiks-btn { background-color: #FFA000; }
+
+        /* Kelas Warna Custom */
+        .text-maroon { color: var(--maroon-aska); }
+        .bg-maroon { background-color: var(--maroon-aska); }
+        .text-gold { color: var(--gold-aska); }
+        .bg-gold { background-color: var(--gold-aska); }
+        .border-gold { border-color: var(--gold-aska); }
+
+        /* Pattern Background ala Tenun untuk Hero Section */
+        .hero-weave {
+            background-color: var(--maroon-aska);
+            background-image: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(0,0,0,0.1) 10px, rgba(0,0,0,0.1) 20px),
+                              repeating-linear-gradient(-45deg, transparent, transparent 5px, rgba(0,0,0,0.05) 5px, rgba(0,0,0,0.05) 10px);
+        }
+
+        /* Tombol Emas Mengkilap */
+        .btn-gold {
+            background: linear-gradient(45deg, #b88a44, #eecf88, #b88a44);
+            background-size: 200% auto;
+            color: #fff;
+            transition: 0.5s;
+        }
+        .btn-gold:hover {
+            background-position: right center;
+        }
         
-        /* Pola background halus untuk Hero */
-        .hero-pattern {
-            background-image: radial-gradient(#FFCA28 15%, transparent 16%), radial-gradient(#FFCA28 15%, transparent 16%);
-            background-size: 60px 60px;
-            background-position: 0 0, 30px 30px;
-            opacity: 0.1;
-        }
-        
-        /* Animasi Tombol WA */
-        @keyframes pulse-custom {
-            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
-            70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(37, 211, 102, 0); }
-            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        /* Animasi Tombol WA Floating */
+        @keyframes pulse-elegant {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4); }
+            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
         }
         .wa-float {
-            animation: pulse-custom 2s infinite;
+            animation: pulse-elegant 3s infinite;
         }
 
-        /* Style untuk FAQ Accordion */
-        details > summary {
-            list-style: none;
-        }
-        details > summary::-webkit-details-marker {
-            display: none;
-        }
+        /* Hide Scrollbar */
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        details > summary { list-style: none; }
+        details > summary::-webkit-details-marker { display: none; }
 
-        /* Style untuk Scrollbar di Modal Katalog */
-        .scrollbar-hide::-webkit-scrollbar {
-            display: none;
+        /* Custom Animasi Modal */
+        .animate-fade-in-up {
+            animation: fadeInUp 0.5s ease-out forwards;
         }
-        .scrollbar-hide {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
-<body class="text-gray-700">
+<body class="antialiased">
 
-    <!-- Navbar -->
-    <nav class="bg-white/90 backdrop-blur-md shadow-md sticky top-0 z-50 transition-all duration-300">
+    <nav class="bg-white/95 backdrop-blur-md shadow-sm sticky top-0 z-50 transition-all duration-300 border-b border-gray-200">
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-            <a href="#" class="text-2xl text-red-700 brand-font tracking-wider hover:scale-105 transition">KRIFIKS</a>
+            <a href="#" class="flex items-center gap-3 group">
+                <img src="assets/logo.png" alt="Logo ASKA" class="h-10 w-10 md:h-12 md:w-12 rounded-full border border-gray-200 object-cover group-hover:border-gold transition duration-300" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'"> 
+                <i class="fas fa-gem text-gold text-2xl hidden"></i>
+                
+                <span class="text-xl md:text-2xl font-bold tracking-widest serif-font text-maroon group-hover:text-gold transition">ASKA</span>
+            </a>
             
-            <!-- Menu Desktop -->
-            <div class="hidden md:flex space-x-6 items-center font-semibold">
-                <a href="#produk" class="hover:text-red-600 transition">Produk</a>
-                <a href="#keunggulan" class="hover:text-red-600 transition">Keunggulan</a>
-                <a href="#galeri" class="hover:text-red-600 transition">Galeri</a>
-                <a href="#faq" class="hover:text-red-600 transition">FAQ</a>
-                <a href="https://www.instagram.com/krifiks.id" target="_blank" class="text-gray-500 hover:text-red-600 transition">
-                    <i class="fab fa-instagram text-2xl"></i>
+            <div class="hidden md:flex space-x-8 items-center text-sm font-semibold tracking-wide uppercase text-gray-600">
+                <a href="#koleksi" class="hover:text-maroon transition">Koleksi</a>
+                <a href="#filosofi" class="hover:text-maroon transition">Filosofi</a>
+                <a href="#testimoni" class="hover:text-maroon transition">Testimoni</a>
+                <a href="#faq" class="hover:text-maroon transition">Info</a>
+                <a href="https://wa.me/6285275088405" class="bg-maroon text-white px-6 py-2 rounded-none hover:bg-red-900 transition tracking-wider">
+                    Hubungi Kami
                 </a>
             </div>
 
-            <!-- Menu Mobile Button -->
-            <button id="mobile-menu-btn" class="md:hidden text-gray-700 focus:outline-none">
-                <i class="fas fa-bars text-2xl"></i>
+            <button id="mobile-menu-btn" class="md:hidden text-gray-800 focus:outline-none">
+                <i class="fas fa-bars text-xl"></i>
             </button>
         </div>
 
-        <!-- Menu Mobile Dropdown -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t p-4 flex flex-col space-y-3 font-semibold shadow-lg">
-            <a href="#produk" class="block hover:text-red-600">Produk</a>
-            <a href="#keunggulan" class="block hover:text-red-600">Keunggulan</a>
-            <a href="#galeri" class="block hover:text-red-600">Galeri</a>
-            <a href="#faq" class="block hover:text-red-600">FAQ</a>
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t p-6 flex flex-col space-y-4 text-center shadow-xl">
+            <a href="#koleksi" class="block hover:text-maroon font-serif text-lg">Koleksi</a>
+            <a href="#filosofi" class="block hover:text-maroon font-serif text-lg">Filosofi</a>
+            <a href="#testimoni" class="block hover:text-maroon font-serif text-lg">Testimoni</a>
+            <a href="#faq" class="block hover:text-maroon font-serif text-lg">Info Pemesanan</a>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="krifiks-red text-white py-20 px-4 text-center rounded-b-[3rem] shadow-xl relative overflow-hidden">
-        <!-- Background Pattern -->
-        <div class="absolute inset-0 hero-pattern"></div>
-        
-        <div class="container mx-auto relative z-10" data-aos="fade-down" data-aos-duration="1000">
-            <!-- Logo -->
-            <img src="assets/logo_krifiks_final.png" alt="Logo Krifiks" class="h-48 mx-auto mb-6 drop-shadow-2xl hover:scale-110 transition duration-500 cursor-pointer">
-            
-            <h1 class="text-5xl md:text-8xl mb-2 drop-shadow-lg tracking-wide">KRIFIKS</h1>
-            <div class="inline-block bg-white/10 px-6 py-2 rounded-full backdrop-blur-sm mb-6 transform rotate-1 hover:rotate-0 transition">
-                <p class="text-xl md:text-2xl font-semibold krifiks-yellow tracking-widest">BUKAN KERIPIK BIASA</p>
+    <section class="hero-weave text-white py-24 px-4 text-center relative overflow-hidden min-h-[85vh] flex flex-col justify-center items-center">
+        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-yellow-600 via-yellow-300 to-yellow-600"></div>
+
+        <div class="container mx-auto relative z-10" data-aos="fade-up" data-aos-duration="1200">
+            <div class="mb-8" data-aos="zoom-in" data-aos-delay="200">
+                <img src="assets/logo.png" alt="Logo Tenun ASKA" class="h-32 md:h-48 mx-auto rounded-full shadow-2xl border-4 border-[#C5A059] object-cover bg-white" onerror="this.src='https://placehold.co/200x200/FFFFFF/7D1C25?text=LOGO+ASKA';">
             </div>
             
-            <p class="text-lg md:text-xl max-w-2xl mx-auto text-red-50 leading-relaxed opacity-90 mb-8">
-                Camilan premium dari bahan baku lokal <span class="font-bold text-yellow-300">Tebing Tinggi</span> yang diolah dengan rasa kekinian, pas buat Gen-Z!
+            <p class="text-gold tracking-[0.4em] uppercase text-xs md:text-sm mb-6 font-bold">Original Handwoven Textile</p>
+            <h1 class="text-5xl md:text-7xl mb-8 serif-font leading-tight drop-shadow-lg">
+                Keanggunan <span class="italic text-gold">Ulos Batak</span> <br> Warisan Leluhur
+            </h1>
+            
+            <p class="text-lg md:text-xl max-w-2xl mx-auto text-gray-200 leading-relaxed font-light mb-12 opacity-90">
+                Menghadirkan tenun tradisional asli Tarutung & Toba dengan sentuhan motif klasik yang melambangkan doa, harapan, dan wibawa.
             </p>
 
-            <a href="#produk" class="inline-block bg-yellow-400 text-red-800 font-bold py-3 px-8 rounded-full shadow-lg hover:bg-yellow-300 hover:shadow-xl transition transform hover:-translate-y-1">
-                Cobain Sekarang <i class="fas fa-arrow-down ml-2"></i>
+            <a href="#koleksi" class="inline-block btn-gold text-gray-900 font-bold py-4 px-12 rounded-none shadow-xl hover:shadow-2xl transition transform hover:-translate-y-1 tracking-widest text-sm uppercase">
+                Lihat Galeri
             </a>
         </div>
-    </section>
-
-    <!-- Produk Section -->
-    <section id="produk" class="container mx-auto px-6 py-20">
-        <div class="text-center mb-12" data-aos="fade-up">
-            <h2 class="text-3xl md:text-5xl text-gray-800 mb-2">Produk Andalan</h2>
-            <div class="h-1.5 w-24 krifiks-btn mx-auto rounded-full"></div>
-            <p class="mt-4 text-gray-500">Pilih varian favoritmu, dijamin nagih!</p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <!-- Card 1 -->
-            <div class="bg-white p-6 rounded-3xl shadow-lg hover:shadow-2xl transition duration-300 border-b-8 border-orange-400 group" data-aos="fade-up" data-aos-delay="100">
-                <div class="bg-orange-100 w-14 h-14 rounded-full flex items-center justify-center mb-6 group-hover:bg-orange-400 transition">
-                    <i class="fas fa-leaf text-orange-500 text-2xl group-hover:text-white transition"></i>
-                </div>
-                <h3 class="text-2xl mb-2 text-gray-800">Keripik Singkong</h3>
-                <p class="text-sm text-gray-500 leading-relaxed">Tekstur super renyah dengan cita rasa gurih yang jadi kanvas sempurna.</p>
-            </div>
-            <!-- Card 2 -->
-            <div class="bg-white p-6 rounded-3xl shadow-lg hover:shadow-2xl transition duration-300 border-b-8 border-green-400 group" data-aos="fade-up" data-aos-delay="200">
-                <div class="bg-green-100 w-14 h-14 rounded-full flex items-center justify-center mb-6 group-hover:bg-green-400 transition">
-                    <i class="fas fa-tree text-green-500 text-2xl group-hover:text-white transition"></i>
-                </div>
-                <h3 class="text-2xl mb-2 text-gray-800">Keripik Sukun</h3>
-                <p class="text-sm text-gray-500 leading-relaxed">Tekstur unik, sedikit padat namun rapuh, dengan manis alami sukun.</p>
-            </div>
-            <!-- Card 3 -->
-            <div class="bg-white p-6 rounded-3xl shadow-lg hover:shadow-2xl transition duration-300 border-b-8 border-yellow-400 group" data-aos="fade-up" data-aos-delay="300">
-                <div class="bg-yellow-100 w-14 h-14 rounded-full flex items-center justify-center mb-6 group-hover:bg-yellow-400 transition">
-                    <i class="fas fa-lemon text-yellow-600 text-2xl group-hover:text-white transition"></i>
-                </div>
-                <h3 class="text-2xl mb-2 text-gray-800">Keripik Pisang</h3>
-                <p class="text-sm text-gray-500 leading-relaxed">Manis legit pisang pilihan berpadu harmonis dengan bumbu gurih.</p>
-            </div>
-            <!-- Card 4 -->
-            <div class="bg-white p-6 rounded-3xl shadow-lg hover:shadow-2xl transition duration-300 border-b-8 border-red-500 group" data-aos="fade-up" data-aos-delay="400">
-                <div class="bg-red-100 w-14 h-14 rounded-full flex items-center justify-center mb-6 group-hover:bg-red-500 transition">
-                    <i class="fas fa-fire text-red-500 text-2xl group-hover:text-white transition"></i>
-                </div>
-                <h3 class="text-2xl mb-2 text-gray-800">Varian Hits</h3>
-                <p class="text-sm text-gray-500 leading-relaxed">Balado, Jagung Bakar, dan Original dengan <span class="font-bold text-red-500">Saus Glaze</span> (Matcha, Tiramisu).</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- USP Section (Keunggulan) -->
-    <section id="keunggulan" class="bg-white py-20 relative overflow-hidden">
-        <div class="absolute -right-20 top-20 text-9xl text-gray-100 opacity-50 rotate-12 pointer-events-none">
-            <i class="fas fa-star"></i>
-        </div>
         
+        <div class="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-[#F9F7F2] to-transparent"></div>
+    </section>
+
+    <section id="koleksi" class="container mx-auto px-6 py-24">
+        <div class="text-center mb-16" data-aos="fade-up">
+            <h2 class="text-4xl md:text-5xl text-maroon mb-4 serif-font">Koleksi Mahakarya</h2>
+            <div class="h-0.5 w-24 bg-gold mx-auto"></div>
+            <p class="mt-4 text-gray-500 italic font-serif">"Setiap motif bercerita, setiap benang bermakna."</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+            <div class="bg-white group cursor-pointer shadow-lg hover:shadow-2xl transition duration-500" 
+                 data-aos="fade-up" data-aos-delay="100"
+                 onclick="openLookbook('assets/ulos_sadum.jpg', 'Ulos Sadum', 'Biasanya digunakan sebagai ulos parompa atau hadiah sukacita. Memiliki warna dasar cerah dengan manik-manik yang indah.')">
+                <div class="overflow-hidden relative h-96 bg-gray-200">
+                    <img src="https://placehold.co/600x800/7D1C25/FFFFFF?text=Ulos+Sadum" alt="Ulos Sadum" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                        <span class="text-white tracking-widest text-sm uppercase border border-white px-6 py-3 hover:bg-white hover:text-black transition">Lihat Detail</span>
+                    </div>
+                </div>
+                <div class="p-6 text-center bg-white relative z-10 -mt-10 mx-6 shadow-sm border-t-4 border-gold">
+                    <h3 class="text-2xl serif-font text-gray-800 mb-1">Ulos Sadum</h3>
+                    <p class="text-xs text-gray-400 uppercase tracking-widest mb-0">Premium Silk</p>
+                </div>
+            </div>
+
+            <div class="bg-white group cursor-pointer shadow-lg hover:shadow-2xl transition duration-500" 
+                 data-aos="fade-up" data-aos-delay="200"
+                 onclick="openLookbook('assets/ragi_hotang.jpg', 'Ragi Hotang', 'Kain sakral yang sering diberikan kepada pengantin baru (Ulos Hela), melambangkan ikatan kasih sayang yang kuat seperti rotan.')">
+                <div class="overflow-hidden relative h-96 bg-gray-200">
+                    <img src="https://placehold.co/600x800/1A1A1A/C5A059?text=Ragi+Hotang" alt="Ulos Ragi Hotang" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                        <span class="text-white tracking-widest text-sm uppercase border border-white px-6 py-3 hover:bg-white hover:text-black transition">Lihat Detail</span>
+                    </div>
+                </div>
+                <div class="p-6 text-center bg-white relative z-10 -mt-10 mx-6 shadow-sm border-t-4 border-gold">
+                    <h3 class="text-2xl serif-font text-gray-800 mb-1">Ragi Hotang</h3>
+                    <p class="text-xs text-gray-400 uppercase tracking-widest mb-0">Best Seller</p>
+                </div>
+            </div>
+
+            <div class="bg-white group cursor-pointer shadow-lg hover:shadow-2xl transition duration-500" 
+                 data-aos="fade-up" data-aos-delay="300"
+                 onclick="openLookbook('assets/songket.jpg', 'Songket Batak', 'Ditenun dengan benang emas berkualitas tinggi, memberikan kesan mewah dan elegan untuk acara pesta atau formal.')">
+                <div class="overflow-hidden relative h-96 bg-gray-200">
+                    <img src="https://placehold.co/600x800/C5A059/1A1A1A?text=Songket+Emas" alt="Songket Batak" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                        <span class="text-white tracking-widest text-sm uppercase border border-white px-6 py-3 hover:bg-white hover:text-black transition">Lihat Detail</span>
+                    </div>
+                </div>
+                <div class="p-6 text-center bg-white relative z-10 -mt-10 mx-6 shadow-sm border-t-4 border-gold">
+                    <h3 class="text-2xl serif-font text-gray-800 mb-1">Songket Emas</h3>
+                    <p class="text-xs text-gray-400 uppercase tracking-widest mb-0">Exclusive</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="filosofi" class="bg-white py-20 relative border-t border-gray-100">
         <div class="container mx-auto px-6 relative z-10">
-            <div class="text-center mb-16" data-aos="zoom-in">
-                <h2 class="text-3xl md:text-5xl text-gray-800 mb-2">Kenapa Krifiks Beda?</h2>
-                <div class="h-1.5 w-24 krifiks-btn mx-auto rounded-full"></div>
-            </div>
-            
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-                <div data-aos="fade-up" data-aos-delay="100" class="hover:-translate-y-2 transition duration-300">
-                    <div class="w-20 h-20 mx-auto bg-yellow-100 rounded-full flex items-center justify-center mb-4">
-                        <i class="fas fa-map-marker-alt text-4xl text-yellow-600"></i>
-                    </div>
-                    <h4 class="font-bold text-lg text-gray-800">Lokal Terbaik</h4>
-                    <p class="text-sm text-gray-500 mt-2">Dari petani asli Tebing Tinggi</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                
+                <div data-aos="fade-right" class="relative pl-4 pt-4">
+                    <div class="absolute top-0 left-0 w-full h-full border-2 border-gold -z-10 transform -translate-x-2 -translate-y-2"></div>
+                    <img src="https://placehold.co/600x400/7D1C25/FFFFFF?text=Proses+Menenun+Tradisional" alt="Proses Menenun" class="w-full shadow-2xl">
                 </div>
-                <div data-aos="fade-up" data-aos-delay="200" class="hover:-translate-y-2 transition duration-300">
-                    <div class="w-20 h-20 mx-auto bg-blue-100 rounded-full flex items-center justify-center mb-4">
-                        <i class="fas fa-magic text-4xl text-blue-500"></i>
-                    </div>
-                    <h4 class="font-bold text-lg text-gray-800">Inovasi Rasa</h4>
-                    <p class="text-sm text-gray-500 mt-2">Saus glaze yang unik & nagih</p>
+
+                <div data-aos="fade-left">
+                    <h2 class="text-4xl text-maroon mb-6 serif-font">Ditenun dengan Hati,<br>Diwariskan dengan Bangga</h2>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        Tenun ASKA bukan sekadar kain. Setiap helai benang ditenun menggunakan <strong>ATBM (Alat Tenun Bukan Mesin)</strong> oleh pengrajin lokal berpengalaman di Sumatera Utara.
+                    </p>
+                    
+                    <ul class="space-y-6 mt-8">
+                        <li class="flex items-start">
+                            <span class="bg-maroon text-gold w-10 h-10 flex items-center justify-center rounded-none mr-4 text-lg shadow-lg"><i class="fas fa-certificate"></i></span>
+                            <div>
+                                <h4 class="font-bold text-gray-800 text-lg serif-font">100% Authentic</h4>
+                                <p class="text-sm text-gray-500">Motif asli sesuai pakem budaya Batak.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="bg-maroon text-gold w-10 h-10 flex items-center justify-center rounded-none mr-4 text-lg shadow-lg"><i class="fas fa-hands"></i></span>
+                            <div>
+                                <h4 class="font-bold text-gray-800 text-lg serif-font">Handmade Quality</h4>
+                                <p class="text-sm text-gray-500">Kerapian tenunan tangan yang presisi & kuat.</p>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
-                <div data-aos="fade-up" data-aos-delay="300" class="hover:-translate-y-2 transition duration-300">
-                    <div class="w-20 h-20 mx-auto bg-orange-100 rounded-full flex items-center justify-center mb-4">
-                        <i class="fas fa-check-circle text-4xl text-orange-500"></i>
-                    </div>
-                    <h4 class="font-bold text-lg text-gray-800">Pasti Renyah</h4>
-                    <p class="text-sm text-gray-500 mt-2">Teknik goreng modern</p>
-                </div>
-                <div data-aos="fade-up" data-aos-delay="400" class="hover:-translate-y-2 transition duration-300">
-                    <div class="w-20 h-20 mx-auto bg-green-100 rounded-full flex items-center justify-center mb-4">
-                        <i class="fas fa-shield-heart text-4xl text-green-600"></i>
-                    </div>
-                    <h4 class="font-bold text-lg text-gray-800">Tanpa Pengawet</h4>
-                    <p class="text-sm text-gray-500 mt-2">Aman, Sehat & Halal</p>
-                </div>
+
             </div>
         </div>
     </section>
 
-    <!-- Testimoni Section (Baru) -->
-    <section class="container mx-auto px-6 py-20">
-        <div class="text-center mb-12" data-aos="fade-up">
-            <h2 class="text-3xl md:text-5xl text-gray-800 mb-2">Kata Mereka</h2>
-            <div class="h-1.5 w-24 krifiks-btn mx-auto rounded-full"></div>
-            <p class="mt-4 text-gray-500">Apa kata sobat Krifiks?</p>
+    <section id="testimoni" class="container mx-auto px-6 py-24 bg-[#F5F2EA]">
+        <div class="text-center mb-16" data-aos="fade-up">
+            <h2 class="text-3xl text-gray-800 mb-2 serif-font">Apresiasi Pelanggan</h2>
+            <div class="h-0.5 w-16 bg-gold mx-auto"></div>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <!-- Testi 1 -->
-            <div class="bg-white p-6 rounded-2xl shadow border border-gray-100" data-aos="flip-left" data-aos-delay="100">
-                <div class="flex text-yellow-400 mb-3 text-sm">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="bg-white p-10 shadow-sm border-b-4 border-maroon relative" data-aos="fade-up" data-aos-delay="100">
+                <div class="absolute -top-5 left-10 bg-maroon text-white w-10 h-10 flex items-center justify-center text-xl">
+                    <i class="fas fa-quote-left"></i>
+                </div>
+                <div class="text-gold mb-4 text-xs mt-2">
                     <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                 </div>
-                <p class="text-gray-600 italic mb-4">"Gila sih glaze Tiramisu-nya, kirain bakal aneh taunya enak banget! Renyahnya dapet."</p>
-                <div class="font-bold text-gray-800">- Dinda, Mahasiswi</div>
+                <p class="text-gray-600 italic mb-6 text-sm leading-loose">"Kainnya halus, motifnya rapi sekali. Saya pakai untuk acara Wisuda anak, semua keluarga memuji. Terima kasih ASKA."</p>
+                <div class="font-bold text-gray-800 serif-font border-l-2 border-gold pl-4">- Ibu Rostina, Medan</div>
             </div>
-            <!-- Testi 2 -->
-            <div class="bg-white p-6 rounded-2xl shadow border border-gray-100" data-aos="flip-left" data-aos-delay="200">
-                <div class="flex text-yellow-400 mb-3 text-sm">
+            <div class="bg-white p-10 shadow-sm border-b-4 border-maroon relative" data-aos="fade-up" data-aos-delay="200">
+                <div class="absolute -top-5 left-10 bg-maroon text-white w-10 h-10 flex items-center justify-center text-xl">
+                    <i class="fas fa-quote-left"></i>
+                </div>
+                <div class="text-gold mb-4 text-xs mt-2">
                     <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                 </div>
-                <p class="text-gray-600 italic mb-4">"Oleh-oleh wajib kalau ke Tebing Tinggi. Baladonya pedesnya pas, nggak bikin batuk."</p>
-                <div class="font-bold text-gray-800">- Raka, Traveler</div>
+                <p class="text-gray-600 italic mb-6 text-sm leading-loose">"Packagingnya mewah, pas banget buat ngasih kado ke Hula-hula. Sangat berkelas."</p>
+                <div class="font-bold text-gray-800 serif-font border-l-2 border-gold pl-4">- Amang Boru Sinaga</div>
             </div>
-            <!-- Testi 3 -->
-            <div class="bg-white p-6 rounded-2xl shadow border border-gray-100" data-aos="flip-left" data-aos-delay="300">
-                <div class="flex text-yellow-400 mb-3 text-sm">
+            <div class="bg-white p-10 shadow-sm border-b-4 border-maroon relative" data-aos="fade-up" data-aos-delay="300">
+                <div class="absolute -top-5 left-10 bg-maroon text-white w-10 h-10 flex items-center justify-center text-xl">
+                    <i class="fas fa-quote-left"></i>
+                </div>
+                <div class="text-gold mb-4 text-xs mt-2">
                     <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                 </div>
-                <p class="text-gray-600 italic mb-4">"Kemasan premium banget, cocok buat kado atau snack rapat kantor."</p>
-                <div class="font-bold text-gray-800">- Bu Sari, Pegawai Bank</div>
+                <p class="text-gray-600 italic mb-6 text-sm leading-loose">"Warna merah marunnya elegan, tidak norak. Benang emasnya juga kelihatan mahal. Recommended!"</p>
+                <div class="font-bold text-gray-800 serif-font border-l-2 border-gold pl-4">- Kak Grace, Balige</div>
             </div>
         </div>
     </section>
 
-    <!-- Galeri Section (Updated with Modal Triggers) -->
-    <section id="galeri" class="container mx-auto px-6 py-10 mb-10">
-        <div class="text-center mb-12" data-aos="fade-up">
-            <h2 class="text-3xl md:text-5xl text-gray-800 mb-2">Galeri Krifiks</h2>
-            <div class="h-1.5 w-24 krifiks-btn mx-auto rounded-full"></div>
-        </div>
-
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <!-- Gambar 1 (Single View) -->
-            <div onclick="openSingleModal('assets/balado.jpg', 'Balado Pedas')" class="group relative rounded-xl overflow-hidden shadow-lg aspect-[4/5] cursor-pointer" data-aos="zoom-in" data-aos-delay="100">
-                <img src="assets/balado.jpg" alt="Balado" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" onerror="this.src='https://placehold.co/400x500?text=Foto+Produk';">
-                <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
-                    <p class="text-white font-bold border-2 border-white px-4 py-1 rounded-full">Lihat</p>
-                </div>
-                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
-                    <p class="text-white text-sm font-bold">Balado Pedas</p>
-                </div>
-            </div>
-             <!-- Gambar 2 (Single View) -->
-             <div onclick="openSingleModal('assets/jagung_bakar.jpg', 'Jagung Bakar')" class="group relative rounded-xl overflow-hidden shadow-lg aspect-[4/5] cursor-pointer" data-aos="zoom-in" data-aos-delay="200">
-                <img src="assets/jagung_bakar.jpg" alt="Jagung" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" onerror="this.src='https://placehold.co/400x500?text=Foto+Produk';">
-                <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
-                    <p class="text-white font-bold border-2 border-white px-4 py-1 rounded-full">Lihat</p>
-                </div>
-                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
-                    <p class="text-white text-sm font-bold">Jagung Bakar</p>
-                </div>
-            </div>
-             <!-- Gambar 3 (Single View) -->
-             <div onclick="openSingleModal('assets/tiramisu.jpg', 'Saus Glaze Tiramisu')" class="group relative rounded-xl overflow-hidden shadow-lg aspect-[4/5] cursor-pointer" data-aos="zoom-in" data-aos-delay="300">
-                <img src="assets/tiramisu.jpg" alt="Glaze" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" onerror="this.src='https://placehold.co/400x500?text=Foto+Produk';">
-                <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
-                    <p class="text-white font-bold border-2 border-white px-4 py-1 rounded-full">Lihat</p>
-                </div>
-                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
-                    <p class="text-white text-sm font-bold">Saus Glaze</p>
-                </div>
-            </div>
-             <!-- Gambar 4 (CATALOGUE MODE) -->
-             <div onclick="openCatalogModal()" class="group relative rounded-xl overflow-hidden shadow-lg aspect-[4/5] cursor-pointer" data-aos="zoom-in" data-aos-delay="400">
-                <img src="assets/Premium Krifiks Pack.jpg" alt="Kemasan" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" onerror="this.src='https://placehold.co/400x500?text=Foto+Produk';">
-                <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
-                    <p class="text-white font-bold border-2 border-white px-4 py-1 rounded-full">Lihat Katalog</p>
-                </div>
-                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
-                    <p class="text-white text-sm font-bold">Katalog Lengkap</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ Section (Baru & Interaktif) -->
-    <section id="faq" class="bg-white py-16">
+    <section id="faq" class="bg-white py-20">
         <div class="container mx-auto px-6 max-w-3xl">
-            <div class="text-center mb-10" data-aos="fade-up">
-                <h2 class="text-3xl font-bold text-gray-800">Sering Ditanyakan (FAQ)</h2>
-                <div class="h-1 w-16 krifiks-btn mx-auto rounded-full mt-2"></div>
+            <div class="text-center mb-12" data-aos="fade-up">
+                <h2 class="text-3xl font-bold text-gray-800 serif-font">Pertanyaan Umum</h2>
             </div>
 
-            <div class="space-y-4" data-aos="fade-up" data-aos-delay="100">
-                <details class="group bg-orange-50 p-4 rounded-xl cursor-pointer">
-                    <summary class="flex justify-between items-center font-bold text-gray-800">
-                        Apakah Krifiks Halal?
-                        <span class="transition group-open:rotate-180"><i class="fas fa-chevron-down"></i></span>
+            <div class="divide-y divide-gray-200" data-aos="fade-up" data-aos-delay="100">
+                <details class="group py-6 cursor-pointer">
+                    <summary class="flex justify-between items-center font-bold text-gray-800 hover:text-maroon transition text-lg serif-font">
+                        Apakah benang yang digunakan luntur?
+                        <span class="transition group-open:rotate-180"><i class="fas fa-chevron-down text-gray-400"></i></span>
                     </summary>
-                    <p class="text-gray-600 mt-4 text-sm leading-relaxed">
-                        Tentu saja! Semua bahan baku Krifiks dijamin halal dan diproses secara higienis tanpa bahan-bahan non-halal.
+                    <p class="text-gray-600 mt-4 text-sm leading-relaxed pl-4 border-l-2 border-gold">
+                        Kami menggunakan benang berkualitas tinggi. Namun, untuk menjaga kualitas warna emas dan marun, disarankan pencucian pertama dipisah dan menggunakan metode <em>dry clean</em> atau cuci tangan ringan tanpa pemutih.
                     </p>
                 </details>
 
-                <details class="group bg-orange-50 p-4 rounded-xl cursor-pointer">
-                    <summary class="flex justify-between items-center font-bold text-gray-800">
-                        Berapa lama keripik tahan?
-                        <span class="transition group-open:rotate-180"><i class="fas fa-chevron-down"></i></span>
+                <details class="group py-6 cursor-pointer">
+                    <summary class="flex justify-between items-center font-bold text-gray-800 hover:text-maroon transition text-lg serif-font">
+                        Bisa pesan motif khusus (Custom)?
+                        <span class="transition group-open:rotate-180"><i class="fas fa-chevron-down text-gray-400"></i></span>
                     </summary>
-                    <p class="text-gray-600 mt-4 text-sm leading-relaxed">
-                        Dengan kemasan ziplock premium kami, Krifiks bisa tahan renyah hingga 3-4 bulan jika belum dibuka, dan 1 minggu setelah dibuka (asal ditutup rapat lagi ya!).
+                    <p class="text-gray-600 mt-4 text-sm leading-relaxed pl-4 border-l-2 border-gold">
+                        Tentu. Kami menerima pesanan motif khusus untuk seragam keluarga (sarehat) atau acara adat dengan sistem Pre-Order (PO). Estimasi pengerjaan 2-4 minggu tergantung kerumitan motif.
                     </p>
                 </details>
 
-                <details class="group bg-orange-50 p-4 rounded-xl cursor-pointer">
-                    <summary class="flex justify-between items-center font-bold text-gray-800">
-                        Bisa kirim ke luar kota?
-                        <span class="transition group-open:rotate-180"><i class="fas fa-chevron-down"></i></span>
+                <details class="group py-6 cursor-pointer">
+                    <summary class="flex justify-between items-center font-bold text-gray-800 hover:text-maroon transition text-lg serif-font">
+                        Pengiriman dari mana?
+                        <span class="transition group-open:rotate-180"><i class="fas fa-chevron-down text-gray-400"></i></span>
                     </summary>
-                    <p class="text-gray-600 mt-4 text-sm leading-relaxed">
-                        Bisa banget! Kami melayani pengiriman ke seluruh Indonesia dengan packing aman (bubble wrap).
+                    <p class="text-gray-600 mt-4 text-sm leading-relaxed pl-4 border-l-2 border-gold">
+                        Pengiriman dilakukan langsung dari galeri kami di Sumatera Utara ke seluruh Indonesia. Kami menjamin packing aman dengan box eksklusif agar kain tidak rusak.
                     </p>
                 </details>
             </div>
         </div>
     </section>
 
-    <!-- Call To Action (Pesan) -->
-    <section class="bg-gray-800 py-20 text-center relative overflow-hidden">
+    <section class="bg-maroon py-24 text-center relative overflow-hidden">
+        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/black-linen.png')] opacity-20"></div>
         <div class="container mx-auto px-4 relative z-10">
-            <h2 class="text-3xl md:text-4xl font-bold mb-4 text-white" data-aos="fade-up">Siap Ngemil Enak?</h2>
-            <p class="text-gray-400 mb-10 max-w-lg mx-auto" data-aos="fade-up" data-aos-delay="100">
-                Langsung kepoin dan pesan KRIFIKS sekarang. Jangan sampai kehabisan stok hari ini!
+            <h2 class="text-3xl md:text-5xl font-bold mb-6 text-white serif-font" data-aos="fade-up">Miliki Warisan Budaya</h2>
+            <p class="text-gray-200 mb-10 max-w-lg mx-auto font-light tracking-wide" data-aos="fade-up" data-aos-delay="100">
+                Konsultasikan kebutuhan kain tenun Anda bersama kami. Dapatkan penawaran eksklusif untuk pembelian grosir/seragam.
             </p>
             
-            <div class="flex flex-col md:flex-row justify-center gap-4" data-aos="zoom-in" data-aos-delay="200">
-                <!-- Tombol WhatsApp -->
-                <a href="https://wa.me/6285275088405?text=Halo%20Krifiks,%20saya%20mau%20pesan%20keripiknya%20dong!" target="_blank" class="wa-btn text-white px-8 py-4 rounded-full font-bold shadow-lg hover:shadow-green-500/50 transition flex items-center justify-center gap-3 transform hover:-translate-y-1 text-lg">
-                    <i class="fab fa-whatsapp text-2xl"></i> Pesan Sekarang
+            <div class="flex flex-col md:flex-row justify-center gap-6" data-aos="zoom-in" data-aos-delay="200">
+                <a href="https://wa.me/6285275088405?text=Halo%20ASKA,%20saya%20tertarik%20dengan%20koleksi%20Tenunnya." target="_blank" class="btn-gold text-white px-10 py-4 font-bold shadow-2xl hover:shadow-white/20 transition flex items-center justify-center gap-3 text-sm tracking-widest uppercase rounded-none">
+                    <i class="fab fa-whatsapp text-xl"></i> Hubungi via WhatsApp
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-8 text-center border-t border-gray-800">
-        <div class="flex justify-center space-x-8 mb-6">
-            <a href="#" class="text-gray-400 hover:text-yellow-400 transition transform hover:scale-125"><i class="fab fa-tiktok text-2xl"></i></a>
-            <a href="https://www.instagram.com/krifiks.id" target="_blank" class="text-gray-400 hover:text-yellow-400 transition transform hover:scale-125"><i class="fab fa-instagram text-2xl"></i></a>
-            <a href="https://wa.me/6285275088405" target="_blank" class="text-gray-400 hover:text-yellow-400 transition transform hover:scale-125"><i class="fab fa-whatsapp text-2xl"></i></a>
+    <footer class="bg-[#111] text-gray-400 py-12 border-t border-gray-800">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="text-center md:text-left">
+                <a href="#" class="flex items-center justify-center md:justify-start gap-2 mb-2 group">
+                    <img src="assets/logo.png" alt="Logo" class="h-8 w-8 rounded-full border border-gray-600 grayscale group-hover:grayscale-0 transition">
+                    <span class="text-2xl font-bold tracking-widest serif-font text-white">ASKA</span>
+                </a>
+                <p class="text-xs text-gray-600 uppercase tracking-widest">Premium Batak Textile</p>
+            </div>
+
+            <div class="flex space-x-8">
+                <a href="#" class="hover:text-gold transition"><i class="fab fa-instagram text-xl"></i></a>
+                <a href="#" class="hover:text-gold transition"><i class="fab fa-facebook text-xl"></i></a>
+                <a href="https://wa.me/6285275088405" class="hover:text-gold transition"><i class="fab fa-whatsapp text-xl"></i></a>
+            </div>
         </div>
-        <p class="text-xs text-gray-500">© 2025 KRIFIKS - UMKM Tebing Tinggi, Sumatera Utara.</p>
+        <div class="text-center mt-10 text-xs text-gray-700">
+            © 2025 Tenun ASKA. All Rights Reserved.
+        </div>
     </footer>
 
-    <!-- Floating WhatsApp Button (Fixed) -->
-    <a href="https://wa.me/6285275088405?text=Halo%20Krifiks,%20saya%20mau%20tanya-tanya%20dong!" target="_blank" class="fixed bottom-6 right-6 bg-green-500 text-white p-4 rounded-full shadow-2xl hover:bg-green-600 transition z-50 wa-float flex items-center justify-center">
-        <i class="fab fa-whatsapp text-4xl"></i>
+    <a href="https://wa.me/6285275088405" target="_blank" class="fixed bottom-8 right-8 bg-[#25D366] text-white p-4 rounded-full shadow-2xl hover:bg-green-700 transition z-50 wa-float flex items-center justify-center">
+        <i class="fab fa-whatsapp text-3xl"></i>
     </a>
 
-    <!-- MODAL LIGHTBOX (Rahasia) -->
-    <div id="imageModal" class="fixed inset-0 z-[100] hidden bg-black/95 flex justify-center items-center p-4 backdrop-blur-sm transition-opacity duration-300" onclick="closeModalOnOutside(event)">
-        <!-- Tombol Close -->
-        <button onclick="closeModal()" class="absolute top-5 right-5 text-white text-5xl hover:text-red-500 transition focus:outline-none">&times;</button>
+    <div id="askaModal" class="fixed inset-0 z-[100] hidden bg-black/95 flex justify-center items-center backdrop-blur-sm transition-opacity duration-500 opacity-0" onclick="closeAskaModal(event)">
         
-        <div id="modalContent" class="max-w-5xl w-full max-h-[90vh] overflow-y-auto scrollbar-hide rounded-2xl relative">
+        <button onclick="closeModal()" class="absolute top-6 right-6 text-white/70 hover:text-white transition transform hover:rotate-90 duration-300 focus:outline-none z-50">
+            <i class="fas fa-times text-4xl font-thin"></i>
+        </button>
+
+        <div class="max-w-6xl w-full flex flex-col md:flex-row bg-[#1a1a1a] shadow-2xl rounded-sm overflow-hidden mx-4 animate-fade-in-up">
             
-            <!-- Tampilan 1: Gambar Tunggal -->
-            <div id="singleImageView" class="hidden text-center">
-                <img id="modalImage" src="" class="max-h-[80vh] mx-auto rounded-lg shadow-2xl object-contain">
-                <h3 id="modalTitle" class="text-white text-xl mt-4 font-bold tracking-wide"></h3>
+            <div class="md:w-3/4 bg-black flex items-center justify-center relative min-h-[50vh]">
+                <img id="modalImg" src="" class="max-h-[80vh] object-contain shadow-lg" alt="Detail Tenun">
+                <div class="absolute bottom-4 right-4 text-white/30 text-xs tracking-[0.5em] font-serif hidden md:block">TENUN ASKA ORIGINAL</div>
             </div>
 
-            <!-- Tampilan 2: Katalog Produk (Untuk Gambar 4) -->
-            <div id="catalogView" class="hidden bg-white rounded-2xl p-6">
-                <h2 class="text-3xl font-bold text-gray-800 mb-2 text-center brand-font">Katalog KRIFIKS</h2>
-                <div class="h-1 w-20 bg-orange-500 mx-auto rounded-full mb-6"></div>
+            <div class="md:w-1/4 p-8 flex flex-col justify-center border-l border-white/10 bg-[#1a1a1a]">
+                <h3 id="modalTitle" class="text-3xl font-serif text-[#C5A059] mb-4 leading-tight">Nama Kain</h3>
+                <div class="h-0.5 w-12 bg-[#7D1C25] mb-6"></div>
+                <p id="modalDesc" class="text-gray-400 text-sm leading-loose mb-8 font-light">
+                    Keterangan detail mengenai filosofi motif kain ini dan peruntukannya dalam adat Batak.
+                </p>
                 
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <!-- Item Katalog 1: Balado -->
-                    <div class="text-center group">
-                        <div class="rounded-xl overflow-hidden shadow mb-2 aspect-square">
-                            <img src="assets/balado.jpg" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                        </div>
-                        <p class="font-bold text-gray-700 text-sm">Singkong Balado</p>
-                    </div>
-                    <!-- Item Katalog 2: Jagung Bakar -->
-                    <div class="text-center group">
-                        <div class="rounded-xl overflow-hidden shadow mb-2 aspect-square">
-                            <img src="assets/jagung_bakar.jpg" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                        </div>
-                        <p class="font-bold text-gray-700 text-sm">Singkong Jagung Bakar</p>
-                    </div>
-                    <!-- Item Katalog 3: Balado Manis -->
-                    <div class="text-center group">
-                        <div class="rounded-xl overflow-hidden shadow mb-2 aspect-square">
-                            <!-- Ganti gambar ini nanti -->
-                            <img src="assets/balado_manis.jpg" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                        </div>
-                        <p class="font-bold text-gray-700 text-sm">Singkong Balado Manis</p>
-                    </div>
-                    <!-- Item Katalog 4: Sukun -->
-                    <div class="text-center group">
-                        <div class="rounded-xl overflow-hidden shadow mb-2 aspect-square">
-                            <!-- Ganti gambar ini nanti dengan keripik sukun -->
-                            <img src="assets/sukun.jpg" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                        </div>
-                        <p class="font-bold text-gray-700 text-sm">Keripik Sukun</p>
-                    </div>
-                    <!-- Item Katalog 5: Pisang -->
-                    <div class="text-center group">
-                        <div class="rounded-xl overflow-hidden shadow mb-2 aspect-square">
-                            <!-- Ganti gambar ini nanti dengan keripik pisang -->
-                            <img src="assets/pisang.jpg" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                        </div>
-                        <p class="font-bold text-gray-700 text-sm">Keripik Pisang</p>
-                    </div>
-                    <!-- Item Katalog 6: Glaze Tiramisu -->
-                    <div class="text-center group">
-                        <div class="rounded-xl overflow-hidden shadow mb-2 aspect-square">
-                            <img src="assets/tiramisu.jpg" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                        </div>
-                        <p class="font-bold text-gray-700 text-sm">Glaze Tiramisu</p>
-                    </div>
-                    <!-- Item Katalog 7: Glaze Matcha -->
-                    <div class="text-center group">
-                        <div class="rounded-xl overflow-hidden shadow mb-2 aspect-square">
-                            <!-- Ganti gambar ini nanti -->
-                            <img src="assets/matcha.jpg" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                        </div>
-                        <p class="font-bold text-gray-700 text-sm">Glaze Matcha</p>
-                    </div>
-                     <!-- Item Katalog 8: Glaze Coklat -->
-                     <div class="text-center group">
-                        <div class="rounded-xl overflow-hidden shadow mb-2 aspect-square">
-                            <!-- Ganti gambar ini nanti -->
-                            <img src="assets/coklat.jpg" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                        </div>
-                        <p class="font-bold text-gray-700 text-sm">Glaze Coklat</p>
-                    </div>
-                </div>
-                
-                <div class="mt-8 text-center">
-                    <a href="https://wa.me/6285275088405" target="_blank" class="inline-block bg-green-500 text-white px-6 py-2 rounded-full font-bold hover:bg-green-600 transition">
-                        <i class="fab fa-whatsapp mr-2"></i> Pesan Semua Varian
-                    </a>
-                </div>
+                <a href="https://wa.me/6285275088405" class="border border-[#C5A059] text-[#C5A059] py-3 px-6 text-center text-xs uppercase tracking-widest hover:bg-[#C5A059] hover:text-black transition duration-300">
+                    Tanya Harga & Stok
+                </a>
             </div>
-
         </div>
     </div>
 
-    <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // Inisialisasi Animasi AOS
-        AOS.init({
-            once: true, // Animasi cuma sekali pas scroll ke bawah
-            offset: 100, // Mulai animasi sedikit sebelum elemen muncul
-        });
+        // Inisialisasi Animasi Scroll
+        AOS.init({ once: true, offset: 50, duration: 800 });
 
-        // Script untuk Mobile Menu (Hamburger)
+        // Mobile Menu Logic
         const btn = document.getElementById('mobile-menu-btn');
         const menu = document.getElementById('mobile-menu');
+        btn.addEventListener('click', () => { menu.classList.toggle('hidden'); });
 
-        btn.addEventListener('click', () => {
-            menu.classList.toggle('hidden');
-        });
-
-        // --- LOGIC MODAL (LIGHTBOX) ---
-        const modal = document.getElementById('imageModal');
-        const singleView = document.getElementById('singleImageView');
-        const catalogView = document.getElementById('catalogView');
-        const modalImg = document.getElementById('modalImage');
+        // --- LOGIC MODAL LUXURY (Showroom) ---
+        const modal = document.getElementById('askaModal');
+        const modalImg = document.getElementById('modalImg');
         const modalTitle = document.getElementById('modalTitle');
+        const modalDesc = document.getElementById('modalDesc');
 
-        // Buka Modal Gambar Tunggal
-        function openSingleModal(imgSrc, title) {
-            singleView.classList.remove('hidden');
-            catalogView.classList.add('hidden');
-            
+        // Fungsi Buka Modal (Dipanggil saat klik gambar)
+        function openLookbook(imgSrc, title, desc) {
+            // Mencegah gambar kosong atau error placeholder mengganggu estetik
+            if(imgSrc.includes('placehold.co')) {
+               // Tetap buka
+            }
+
             modalImg.src = imgSrc;
             modalTitle.innerText = title;
+            modalDesc.innerText = desc || "Kain tenun otentik dengan kualitas benang terbaik, ditenun dengan ketelitian tinggi oleh pengrajin lokal.";
             
             modal.classList.remove('hidden');
+            // Delay sedikit agar transisi opacity berjalan
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+            }, 10);
         }
 
-        // Buka Modal Katalog (Khusus Gambar 4)
-        function openCatalogModal() {
-            singleView.classList.add('hidden');
-            catalogView.classList.remove('hidden');
-            
-            modal.classList.remove('hidden');
-        }
-
-        // Tutup Modal
+        // Fungsi Tutup Modal
         function closeModal() {
-            modal.classList.add('hidden');
-            // Reset src biar gak flickering pas dibuka lagi
-            setTimeout(() => { modalImg.src = ''; }, 200);
+            modal.classList.add('opacity-0');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                modalImg.src = ''; 
+            }, 500); // Tunggu durasi transisi selesai
         }
 
-        // Tutup kalau klik di luar area gambar
-        function closeModalOnOutside(event) {
-            if (event.target === modal) {
-                closeModal();
-            }
+        // Tutup saat klik area gelap di luar modal
+        function closeAskaModal(event) {
+            if (event.target === modal) { closeModal(); }
         }
     </script>
 
