@@ -1,527 +1,96 @@
-<!DOCTYPE html>
-<html lang="id" class="scroll-smooth">
+<!doctype html>
+<html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KRIFIKS - Bukan Keripik Biasa</title>
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Font Keren -->
-    <link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Ikon (FontAwesome) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <!-- Animasi Scroll (AOS) -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #FFF8E1;
-            overflow-x: hidden; /* Mencegah scroll samping */
-        }
-        h1, h2, h3, .brand-font {
-            font-family: 'Lilita One', cursive;
-        }
-        .krifiks-red { background-color: #DA291C; } 
-        .krifiks-yellow { color: #FFCA28; }
-        .krifiks-btn { background-color: #FFA000; }
-        
-        /* Pola background halus untuk Hero */
-        .hero-pattern {
-            background-image: radial-gradient(#FFCA28 15%, transparent 16%), radial-gradient(#FFCA28 15%, transparent 16%);
-            background-size: 60px 60px;
-            background-position: 0 0, 30px 30px;
-            opacity: 0.1;
-        }
-        
-        /* Animasi Tombol WA */
-        @keyframes pulse-custom {
-            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
-            70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(37, 211, 102, 0); }
-            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
-        }
-        .wa-float {
-            animation: pulse-custom 2s infinite;
-        }
-
-        /* Style untuk FAQ Accordion */
-        details > summary {
-            list-style: none;
-        }
-        details > summary::-webkit-details-marker {
-            display: none;
-        }
-
-        /* Style untuk Scrollbar di Modal Katalog */
-        .scrollbar-hide::-webkit-scrollbar {
-            display: none;
-        }
-        .scrollbar-hide {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="KRIFIKS, keripik lokal premium khas Tebing Tinggi dengan varian rasa gurih dan glaze kekinian.">
+  <meta name="theme-color" content="#c82f23">
+  <meta property="og:title" content="KRIFIKS — Bukan Keripik Biasa">
+  <meta property="og:description" content="Camilan lokal, rasa total. Temukan varian KRIFIKS favoritmu.">
+  <meta property="og:image" content="assets/Premium%20Krifiks%20Pack.jpg">
+  <title>KRIFIKS — Bukan Keripik Biasa</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Lilita+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
-<body class="text-gray-700">
-
-    <!-- Navbar -->
-    <nav class="bg-white/90 backdrop-blur-md shadow-md sticky top-0 z-50 transition-all duration-300">
-        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-            <a href="#" class="text-2xl text-red-700 brand-font tracking-wider hover:scale-105 transition">KRIFIKS</a>
-            
-            <!-- Menu Desktop -->
-            <div class="hidden md:flex space-x-6 items-center font-semibold">
-                <a href="#produk" class="hover:text-red-600 transition">Produk</a>
-                <a href="#keunggulan" class="hover:text-red-600 transition">Keunggulan</a>
-                <a href="#galeri" class="hover:text-red-600 transition">Galeri</a>
-                <a href="#faq" class="hover:text-red-600 transition">FAQ</a>
-                <a href="https://www.instagram.com/krifiks.id" target="_blank" class="text-gray-500 hover:text-red-600 transition">
-                    <i class="fab fa-instagram text-2xl"></i>
-                </a>
-            </div>
-
-            <!-- Menu Mobile Button -->
-            <button id="mobile-menu-btn" class="md:hidden text-gray-700 focus:outline-none">
-                <i class="fas fa-bars text-2xl"></i>
-            </button>
-        </div>
-
-        <!-- Menu Mobile Dropdown -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t p-4 flex flex-col space-y-3 font-semibold shadow-lg">
-            <a href="#produk" class="block hover:text-red-600">Produk</a>
-            <a href="#keunggulan" class="block hover:text-red-600">Keunggulan</a>
-            <a href="#galeri" class="block hover:text-red-600">Galeri</a>
-            <a href="#faq" class="block hover:text-red-600">FAQ</a>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section class="krifiks-red text-white py-20 px-4 text-center rounded-b-[3rem] shadow-xl relative overflow-hidden">
-        <!-- Background Pattern -->
-        <div class="absolute inset-0 hero-pattern"></div>
-        
-        <div class="container mx-auto relative z-10" data-aos="fade-down" data-aos-duration="1000">
-            <!-- Logo -->
-            <img src="assets/logo_krifiks_final.png" alt="Logo Krifiks" class="h-48 mx-auto mb-6 drop-shadow-2xl hover:scale-110 transition duration-500 cursor-pointer">
-            
-            <h1 class="text-5xl md:text-8xl mb-2 drop-shadow-lg tracking-wide">KRIFIKS</h1>
-            <div class="inline-block bg-white/10 px-6 py-2 rounded-full backdrop-blur-sm mb-6 transform rotate-1 hover:rotate-0 transition">
-                <p class="text-xl md:text-2xl font-semibold krifiks-yellow tracking-widest">BUKAN KERIPIK BIASA</p>
-            </div>
-            
-            <p class="text-lg md:text-xl max-w-2xl mx-auto text-red-50 leading-relaxed opacity-90 mb-8">
-                Camilan premium dari bahan baku lokal <span class="font-bold text-yellow-300">Tebing Tinggi</span> yang diolah dengan rasa kekinian, pas buat Gen-Z!
-            </p>
-
-            <a href="#produk" class="inline-block bg-yellow-400 text-red-800 font-bold py-3 px-8 rounded-full shadow-lg hover:bg-yellow-300 hover:shadow-xl transition transform hover:-translate-y-1">
-                Cobain Sekarang <i class="fas fa-arrow-down ml-2"></i>
-            </a>
-        </div>
-    </section>
-
-    <!-- Produk Section -->
-    <section id="produk" class="container mx-auto px-6 py-20">
-        <div class="text-center mb-12" data-aos="fade-up">
-            <h2 class="text-3xl md:text-5xl text-gray-800 mb-2">Produk Andalan</h2>
-            <div class="h-1.5 w-24 krifiks-btn mx-auto rounded-full"></div>
-            <p class="mt-4 text-gray-500">Pilih varian favoritmu, dijamin nagih!</p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <!-- Card 1 -->
-            <div class="bg-white p-6 rounded-3xl shadow-lg hover:shadow-2xl transition duration-300 border-b-8 border-orange-400 group" data-aos="fade-up" data-aos-delay="100">
-                <div class="bg-orange-100 w-14 h-14 rounded-full flex items-center justify-center mb-6 group-hover:bg-orange-400 transition">
-                    <i class="fas fa-leaf text-orange-500 text-2xl group-hover:text-white transition"></i>
-                </div>
-                <h3 class="text-2xl mb-2 text-gray-800">Keripik Singkong</h3>
-                <p class="text-sm text-gray-500 leading-relaxed">Tekstur super renyah dengan cita rasa gurih yang jadi kanvas sempurna.</p>
-            </div>
-            <!-- Card 2 -->
-            <div class="bg-white p-6 rounded-3xl shadow-lg hover:shadow-2xl transition duration-300 border-b-8 border-green-400 group" data-aos="fade-up" data-aos-delay="200">
-                <div class="bg-green-100 w-14 h-14 rounded-full flex items-center justify-center mb-6 group-hover:bg-green-400 transition">
-                    <i class="fas fa-tree text-green-500 text-2xl group-hover:text-white transition"></i>
-                </div>
-                <h3 class="text-2xl mb-2 text-gray-800">Keripik Sukun</h3>
-                <p class="text-sm text-gray-500 leading-relaxed">Tekstur unik, sedikit padat namun rapuh, dengan manis alami sukun.</p>
-            </div>
-            <!-- Card 3 -->
-            <div class="bg-white p-6 rounded-3xl shadow-lg hover:shadow-2xl transition duration-300 border-b-8 border-yellow-400 group" data-aos="fade-up" data-aos-delay="300">
-                <div class="bg-yellow-100 w-14 h-14 rounded-full flex items-center justify-center mb-6 group-hover:bg-yellow-400 transition">
-                    <i class="fas fa-lemon text-yellow-600 text-2xl group-hover:text-white transition"></i>
-                </div>
-                <h3 class="text-2xl mb-2 text-gray-800">Keripik Pisang</h3>
-                <p class="text-sm text-gray-500 leading-relaxed">Manis legit pisang pilihan berpadu harmonis dengan bumbu gurih.</p>
-            </div>
-            <!-- Card 4 -->
-            <div class="bg-white p-6 rounded-3xl shadow-lg hover:shadow-2xl transition duration-300 border-b-8 border-red-500 group" data-aos="fade-up" data-aos-delay="400">
-                <div class="bg-red-100 w-14 h-14 rounded-full flex items-center justify-center mb-6 group-hover:bg-red-500 transition">
-                    <i class="fas fa-fire text-red-500 text-2xl group-hover:text-white transition"></i>
-                </div>
-                <h3 class="text-2xl mb-2 text-gray-800">Varian Hits</h3>
-                <p class="text-sm text-gray-500 leading-relaxed">Balado, Jagung Bakar, dan Original dengan <span class="font-bold text-red-500">Saus Glaze</span> (Matcha, Tiramisu).</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- USP Section (Keunggulan) -->
-    <section id="keunggulan" class="bg-white py-20 relative overflow-hidden">
-        <div class="absolute -right-20 top-20 text-9xl text-gray-100 opacity-50 rotate-12 pointer-events-none">
-            <i class="fas fa-star"></i>
-        </div>
-        
-        <div class="container mx-auto px-6 relative z-10">
-            <div class="text-center mb-16" data-aos="zoom-in">
-                <h2 class="text-3xl md:text-5xl text-gray-800 mb-2">Kenapa Krifiks Beda?</h2>
-                <div class="h-1.5 w-24 krifiks-btn mx-auto rounded-full"></div>
-            </div>
-            
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-                <div data-aos="fade-up" data-aos-delay="100" class="hover:-translate-y-2 transition duration-300">
-                    <div class="w-20 h-20 mx-auto bg-yellow-100 rounded-full flex items-center justify-center mb-4">
-                        <i class="fas fa-map-marker-alt text-4xl text-yellow-600"></i>
-                    </div>
-                    <h4 class="font-bold text-lg text-gray-800">Lokal Terbaik</h4>
-                    <p class="text-sm text-gray-500 mt-2">Dari petani asli Tebing Tinggi</p>
-                </div>
-                <div data-aos="fade-up" data-aos-delay="200" class="hover:-translate-y-2 transition duration-300">
-                    <div class="w-20 h-20 mx-auto bg-blue-100 rounded-full flex items-center justify-center mb-4">
-                        <i class="fas fa-magic text-4xl text-blue-500"></i>
-                    </div>
-                    <h4 class="font-bold text-lg text-gray-800">Inovasi Rasa</h4>
-                    <p class="text-sm text-gray-500 mt-2">Saus glaze yang unik & nagih</p>
-                </div>
-                <div data-aos="fade-up" data-aos-delay="300" class="hover:-translate-y-2 transition duration-300">
-                    <div class="w-20 h-20 mx-auto bg-orange-100 rounded-full flex items-center justify-center mb-4">
-                        <i class="fas fa-check-circle text-4xl text-orange-500"></i>
-                    </div>
-                    <h4 class="font-bold text-lg text-gray-800">Pasti Renyah</h4>
-                    <p class="text-sm text-gray-500 mt-2">Teknik goreng modern</p>
-                </div>
-                <div data-aos="fade-up" data-aos-delay="400" class="hover:-translate-y-2 transition duration-300">
-                    <div class="w-20 h-20 mx-auto bg-green-100 rounded-full flex items-center justify-center mb-4">
-                        <i class="fas fa-shield-heart text-4xl text-green-600"></i>
-                    </div>
-                    <h4 class="font-bold text-lg text-gray-800">Tanpa Pengawet</h4>
-                    <p class="text-sm text-gray-500 mt-2">Aman, Sehat & Halal</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimoni Section (Baru) -->
-    <section class="container mx-auto px-6 py-20">
-        <div class="text-center mb-12" data-aos="fade-up">
-            <h2 class="text-3xl md:text-5xl text-gray-800 mb-2">Kata Mereka</h2>
-            <div class="h-1.5 w-24 krifiks-btn mx-auto rounded-full"></div>
-            <p class="mt-4 text-gray-500">Apa kata sobat Krifiks?</p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <!-- Testi 1 -->
-            <div class="bg-white p-6 rounded-2xl shadow border border-gray-100" data-aos="flip-left" data-aos-delay="100">
-                <div class="flex text-yellow-400 mb-3 text-sm">
-                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                </div>
-                <p class="text-gray-600 italic mb-4">"Gila sih glaze Tiramisu-nya, kirain bakal aneh taunya enak banget! Renyahnya dapet."</p>
-                <div class="font-bold text-gray-800">- Dinda, Mahasiswi</div>
-            </div>
-            <!-- Testi 2 -->
-            <div class="bg-white p-6 rounded-2xl shadow border border-gray-100" data-aos="flip-left" data-aos-delay="200">
-                <div class="flex text-yellow-400 mb-3 text-sm">
-                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                </div>
-                <p class="text-gray-600 italic mb-4">"Oleh-oleh wajib kalau ke Tebing Tinggi. Baladonya pedesnya pas, nggak bikin batuk."</p>
-                <div class="font-bold text-gray-800">- Raka, Traveler</div>
-            </div>
-            <!-- Testi 3 -->
-            <div class="bg-white p-6 rounded-2xl shadow border border-gray-100" data-aos="flip-left" data-aos-delay="300">
-                <div class="flex text-yellow-400 mb-3 text-sm">
-                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                </div>
-                <p class="text-gray-600 italic mb-4">"Kemasan premium banget, cocok buat kado atau snack rapat kantor."</p>
-                <div class="font-bold text-gray-800">- Bu Sari, Pegawai Bank</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Galeri Section (Updated with Modal Triggers) -->
-    <section id="galeri" class="container mx-auto px-6 py-10 mb-10">
-        <div class="text-center mb-12" data-aos="fade-up">
-            <h2 class="text-3xl md:text-5xl text-gray-800 mb-2">Galeri Krifiks</h2>
-            <div class="h-1.5 w-24 krifiks-btn mx-auto rounded-full"></div>
-        </div>
-
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <!-- Gambar 1 (Single View) -->
-            <div onclick="openSingleModal('assets/balado.jpg', 'Balado Pedas')" class="group relative rounded-xl overflow-hidden shadow-lg aspect-[4/5] cursor-pointer" data-aos="zoom-in" data-aos-delay="100">
-                <img src="assets/balado.jpg" alt="Balado" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" onerror="this.src='https://placehold.co/400x500?text=Foto+Produk';">
-                <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
-                    <p class="text-white font-bold border-2 border-white px-4 py-1 rounded-full">Lihat</p>
-                </div>
-                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
-                    <p class="text-white text-sm font-bold">Balado Pedas</p>
-                </div>
-            </div>
-             <!-- Gambar 2 (Single View) -->
-             <div onclick="openSingleModal('assets/jagung_bakar.jpg', 'Jagung Bakar')" class="group relative rounded-xl overflow-hidden shadow-lg aspect-[4/5] cursor-pointer" data-aos="zoom-in" data-aos-delay="200">
-                <img src="assets/jagung_bakar.jpg" alt="Jagung" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" onerror="this.src='https://placehold.co/400x500?text=Foto+Produk';">
-                <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
-                    <p class="text-white font-bold border-2 border-white px-4 py-1 rounded-full">Lihat</p>
-                </div>
-                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
-                    <p class="text-white text-sm font-bold">Jagung Bakar</p>
-                </div>
-            </div>
-             <!-- Gambar 3 (Single View) -->
-             <div onclick="openSingleModal('assets/tiramisu.jpg', 'Saus Glaze Tiramisu')" class="group relative rounded-xl overflow-hidden shadow-lg aspect-[4/5] cursor-pointer" data-aos="zoom-in" data-aos-delay="300">
-                <img src="assets/tiramisu.jpg" alt="Glaze" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" onerror="this.src='https://placehold.co/400x500?text=Foto+Produk';">
-                <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
-                    <p class="text-white font-bold border-2 border-white px-4 py-1 rounded-full">Lihat</p>
-                </div>
-                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
-                    <p class="text-white text-sm font-bold">Saus Glaze</p>
-                </div>
-            </div>
-             <!-- Gambar 4 (CATALOGUE MODE) -->
-             <div onclick="openCatalogModal()" class="group relative rounded-xl overflow-hidden shadow-lg aspect-[4/5] cursor-pointer" data-aos="zoom-in" data-aos-delay="400">
-                <img src="assets/Premium Krifiks Pack.jpg" alt="Kemasan" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" onerror="this.src='https://placehold.co/400x500?text=Foto+Produk';">
-                <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
-                    <p class="text-white font-bold border-2 border-white px-4 py-1 rounded-full">Lihat Katalog</p>
-                </div>
-                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
-                    <p class="text-white text-sm font-bold">Katalog Lengkap</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ Section (Baru & Interaktif) -->
-    <section id="faq" class="bg-white py-16">
-        <div class="container mx-auto px-6 max-w-3xl">
-            <div class="text-center mb-10" data-aos="fade-up">
-                <h2 class="text-3xl font-bold text-gray-800">Sering Ditanyakan (FAQ)</h2>
-                <div class="h-1 w-16 krifiks-btn mx-auto rounded-full mt-2"></div>
-            </div>
-
-            <div class="space-y-4" data-aos="fade-up" data-aos-delay="100">
-                <details class="group bg-orange-50 p-4 rounded-xl cursor-pointer">
-                    <summary class="flex justify-between items-center font-bold text-gray-800">
-                        Apakah Krifiks Halal?
-                        <span class="transition group-open:rotate-180"><i class="fas fa-chevron-down"></i></span>
-                    </summary>
-                    <p class="text-gray-600 mt-4 text-sm leading-relaxed">
-                        Tentu saja! Semua bahan baku Krifiks dijamin halal dan diproses secara higienis tanpa bahan-bahan non-halal.
-                    </p>
-                </details>
-
-                <details class="group bg-orange-50 p-4 rounded-xl cursor-pointer">
-                    <summary class="flex justify-between items-center font-bold text-gray-800">
-                        Berapa lama keripik tahan?
-                        <span class="transition group-open:rotate-180"><i class="fas fa-chevron-down"></i></span>
-                    </summary>
-                    <p class="text-gray-600 mt-4 text-sm leading-relaxed">
-                        Dengan kemasan ziplock premium kami, Krifiks bisa tahan renyah hingga 3-4 bulan jika belum dibuka, dan 1 minggu setelah dibuka (asal ditutup rapat lagi ya!).
-                    </p>
-                </details>
-
-                <details class="group bg-orange-50 p-4 rounded-xl cursor-pointer">
-                    <summary class="flex justify-between items-center font-bold text-gray-800">
-                        Bisa kirim ke luar kota?
-                        <span class="transition group-open:rotate-180"><i class="fas fa-chevron-down"></i></span>
-                    </summary>
-                    <p class="text-gray-600 mt-4 text-sm leading-relaxed">
-                        Bisa banget! Kami melayani pengiriman ke seluruh Indonesia dengan packing aman (bubble wrap).
-                    </p>
-                </details>
-            </div>
-        </div>
-    </section>
-
-    <!-- Call To Action (Pesan) -->
-    <section class="bg-gray-800 py-20 text-center relative overflow-hidden">
-        <div class="container mx-auto px-4 relative z-10">
-            <h2 class="text-3xl md:text-4xl font-bold mb-4 text-white" data-aos="fade-up">Siap Ngemil Enak?</h2>
-            <p class="text-gray-400 mb-10 max-w-lg mx-auto" data-aos="fade-up" data-aos-delay="100">
-                Langsung kepoin dan pesan KRIFIKS sekarang. Jangan sampai kehabisan stok hari ini!
-            </p>
-            
-            <div class="flex flex-col md:flex-row justify-center gap-4" data-aos="zoom-in" data-aos-delay="200">
-                <!-- Tombol WhatsApp -->
-                <a href="https://wa.me/6285275088405?text=Halo%20Krifiks,%20saya%20mau%20pesan%20keripiknya%20dong!" target="_blank" class="wa-btn text-white px-8 py-4 rounded-full font-bold shadow-lg hover:shadow-green-500/50 transition flex items-center justify-center gap-3 transform hover:-translate-y-1 text-lg">
-                    <i class="fab fa-whatsapp text-2xl"></i> Pesan Sekarang
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-8 text-center border-t border-gray-800">
-        <div class="flex justify-center space-x-8 mb-6">
-            <a href="#" class="text-gray-400 hover:text-yellow-400 transition transform hover:scale-125"><i class="fab fa-tiktok text-2xl"></i></a>
-            <a href="https://www.instagram.com/krifiks.id" target="_blank" class="text-gray-400 hover:text-yellow-400 transition transform hover:scale-125"><i class="fab fa-instagram text-2xl"></i></a>
-            <a href="https://wa.me/6285275088405" target="_blank" class="text-gray-400 hover:text-yellow-400 transition transform hover:scale-125"><i class="fab fa-whatsapp text-2xl"></i></a>
-        </div>
-        <p class="text-xs text-gray-500">© 2025 KRIFIKS - UMKM Tebing Tinggi, Sumatera Utara.</p>
-    </footer>
-
-    <!-- Floating WhatsApp Button (Fixed) -->
-    <a href="https://wa.me/6285275088405?text=Halo%20Krifiks,%20saya%20mau%20tanya-tanya%20dong!" target="_blank" class="fixed bottom-6 right-6 bg-green-500 text-white p-4 rounded-full shadow-2xl hover:bg-green-600 transition z-50 wa-float flex items-center justify-center">
-        <i class="fab fa-whatsapp text-4xl"></i>
-    </a>
-
-    <!-- MODAL LIGHTBOX (Rahasia) -->
-    <div id="imageModal" class="fixed inset-0 z-[100] hidden bg-black/95 flex justify-center items-center p-4 backdrop-blur-sm transition-opacity duration-300" onclick="closeModalOnOutside(event)">
-        <!-- Tombol Close -->
-        <button onclick="closeModal()" class="absolute top-5 right-5 text-white text-5xl hover:text-red-500 transition focus:outline-none">&times;</button>
-        
-        <div id="modalContent" class="max-w-5xl w-full max-h-[90vh] overflow-y-auto scrollbar-hide rounded-2xl relative">
-            
-            <!-- Tampilan 1: Gambar Tunggal -->
-            <div id="singleImageView" class="hidden text-center">
-                <img id="modalImage" src="" class="max-h-[80vh] mx-auto rounded-lg shadow-2xl object-contain">
-                <h3 id="modalTitle" class="text-white text-xl mt-4 font-bold tracking-wide"></h3>
-            </div>
-
-            <!-- Tampilan 2: Katalog Produk (Untuk Gambar 4) -->
-            <div id="catalogView" class="hidden bg-white rounded-2xl p-6">
-                <h2 class="text-3xl font-bold text-gray-800 mb-2 text-center brand-font">Katalog KRIFIKS</h2>
-                <div class="h-1 w-20 bg-orange-500 mx-auto rounded-full mb-6"></div>
-                
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <!-- Item Katalog 1: Balado -->
-                    <div class="text-center group">
-                        <div class="rounded-xl overflow-hidden shadow mb-2 aspect-square">
-                            <img src="assets/balado.jpg" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                        </div>
-                        <p class="font-bold text-gray-700 text-sm">Singkong Balado</p>
-                    </div>
-                    <!-- Item Katalog 2: Jagung Bakar -->
-                    <div class="text-center group">
-                        <div class="rounded-xl overflow-hidden shadow mb-2 aspect-square">
-                            <img src="assets/jagung_bakar.jpg" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                        </div>
-                        <p class="font-bold text-gray-700 text-sm">Singkong Jagung Bakar</p>
-                    </div>
-                    <!-- Item Katalog 3: Balado Manis -->
-                    <div class="text-center group">
-                        <div class="rounded-xl overflow-hidden shadow mb-2 aspect-square">
-                            <!-- Ganti gambar ini nanti -->
-                            <img src="assets/balado_manis.jpg" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                        </div>
-                        <p class="font-bold text-gray-700 text-sm">Singkong Balado Manis</p>
-                    </div>
-                    <!-- Item Katalog 4: Sukun -->
-                    <div class="text-center group">
-                        <div class="rounded-xl overflow-hidden shadow mb-2 aspect-square">
-                            <!-- Ganti gambar ini nanti dengan keripik sukun -->
-                            <img src="assets/sukun.jpg" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                        </div>
-                        <p class="font-bold text-gray-700 text-sm">Keripik Sukun</p>
-                    </div>
-                    <!-- Item Katalog 5: Pisang -->
-                    <div class="text-center group">
-                        <div class="rounded-xl overflow-hidden shadow mb-2 aspect-square">
-                            <!-- Ganti gambar ini nanti dengan keripik pisang -->
-                            <img src="assets/pisang.jpg" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                        </div>
-                        <p class="font-bold text-gray-700 text-sm">Keripik Pisang</p>
-                    </div>
-                    <!-- Item Katalog 6: Glaze Tiramisu -->
-                    <div class="text-center group">
-                        <div class="rounded-xl overflow-hidden shadow mb-2 aspect-square">
-                            <img src="assets/tiramisu.jpg" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                        </div>
-                        <p class="font-bold text-gray-700 text-sm">Glaze Tiramisu</p>
-                    </div>
-                    <!-- Item Katalog 7: Glaze Matcha -->
-                    <div class="text-center group">
-                        <div class="rounded-xl overflow-hidden shadow mb-2 aspect-square">
-                            <!-- Ganti gambar ini nanti -->
-                            <img src="assets/matcha.jpg" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                        </div>
-                        <p class="font-bold text-gray-700 text-sm">Glaze Matcha</p>
-                    </div>
-                     <!-- Item Katalog 8: Glaze Coklat -->
-                     <div class="text-center group">
-                        <div class="rounded-xl overflow-hidden shadow mb-2 aspect-square">
-                            <!-- Ganti gambar ini nanti -->
-                            <img src="assets/coklat.jpg" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                        </div>
-                        <p class="font-bold text-gray-700 text-sm">Glaze Coklat</p>
-                    </div>
-                </div>
-                
-                <div class="mt-8 text-center">
-                    <a href="https://wa.me/6285275088405" target="_blank" class="inline-block bg-green-500 text-white px-6 py-2 rounded-full font-bold hover:bg-green-600 transition">
-                        <i class="fab fa-whatsapp mr-2"></i> Pesan Semua Varian
-                    </a>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-    <!-- Scripts -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        // Inisialisasi Animasi AOS
-        AOS.init({
-            once: true, // Animasi cuma sekali pas scroll ke bawah
-            offset: 100, // Mulai animasi sedikit sebelum elemen muncul
-        });
-
-        // Script untuk Mobile Menu (Hamburger)
-        const btn = document.getElementById('mobile-menu-btn');
-        const menu = document.getElementById('mobile-menu');
-
-        btn.addEventListener('click', () => {
-            menu.classList.toggle('hidden');
-        });
-
-        // --- LOGIC MODAL (LIGHTBOX) ---
-        const modal = document.getElementById('imageModal');
-        const singleView = document.getElementById('singleImageView');
-        const catalogView = document.getElementById('catalogView');
-        const modalImg = document.getElementById('modalImage');
-        const modalTitle = document.getElementById('modalTitle');
-
-        // Buka Modal Gambar Tunggal
-        function openSingleModal(imgSrc, title) {
-            singleView.classList.remove('hidden');
-            catalogView.classList.add('hidden');
-            
-            modalImg.src = imgSrc;
-            modalTitle.innerText = title;
-            
-            modal.classList.remove('hidden');
-        }
-
-        // Buka Modal Katalog (Khusus Gambar 4)
-        function openCatalogModal() {
-            singleView.classList.add('hidden');
-            catalogView.classList.remove('hidden');
-            
-            modal.classList.remove('hidden');
-        }
-
-        // Tutup Modal
-        function closeModal() {
-            modal.classList.add('hidden');
-            // Reset src biar gak flickering pas dibuka lagi
-            setTimeout(() => { modalImg.src = ''; }, 200);
-        }
-
-        // Tutup kalau klik di luar area gambar
-        function closeModalOnOutside(event) {
-            if (event.target === modal) {
-                closeModal();
-            }
-        }
-    </script>
-
+<body>
+  <a class="skip-link" href="#main-content">Lewati ke konten utama</a>
+  <header class="site-header" id="beranda">
+    <nav class="nav container" aria-label="Navigasi utama">
+      <a class="brand" href="#beranda" aria-label="KRIFIKS, kembali ke beranda"><b class="brand-mark" aria-hidden="true">K</b><span>KRIFIKS</span></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Buka menu"><span></span><span></span><span></span></button>
+      <div class="nav-menu" id="nav-menu">
+        <a href="#produk">Produk</a><a href="#keunggulan">Keunggulan</a><a href="#cerita">Cerita kami</a><a href="#faq">FAQ</a>
+        <a class="button button-small" href="https://wa.me/6285275088405?text=Halo%20KRIFIKS%2C%20saya%20mau%20pesan." target="_blank" rel="noopener">Pesan sekarang</a>
+      </div>
+    </nav>
+  </header>
+  <main id="main-content">
+    <section class="hero">
+      <div class="hero-dots" aria-hidden="true"></div>
+      <div class="container hero-grid">
+        <div class="hero-copy reveal">
+          <p class="eyebrow"><span></span> Camilan lokal Tebing Tinggi</p>
+          <h1>Renyahnya lokal,<br><em>rasanya total.</em></h1>
+          <p class="hero-lead">Keripik pilihan dengan bumbu berani dan glaze kekinian. Dibuat untuk nemenin kerja, nongkrong, sampai jadi oleh-oleh.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#produk">Lihat semua rasa <span aria-hidden="true">↓</span></a>
+            <a class="text-link" href="https://www.instagram.com/krifiks.id" target="_blank" rel="noopener">@krifiks.id <span aria-hidden="true">↗</span></a>
+          </div>
+          <div class="hero-points" aria-label="Keunggulan singkat"><span><b>8+</b> pilihan rasa</span><span><b>100%</b> bahan lokal</span><span><b>0</b> pengawet</span></div>
+        </div>
+        <div class="hero-visual reveal">
+          <div class="sunburst" aria-hidden="true"></div>
+          <div class="hero-card"><img src="assets/Premium Krifiks Pack.jpg" alt="Kemasan premium KRIFIKS" width="1024" height="1024" fetchpriority="high"></div>
+          <span class="sticker sticker-top">LOKAL<br>PRIDE!</span><span class="sticker sticker-bottom">#BukanKeripikBiasa</span>
+        </div>
+      </div>
+      <div class="marquee" aria-label="Slogan KRIFIKS"><div><span>RENYAH POLL</span><i>✦</i><span>RASA KEKINIAN</span><i>✦</i><span>BAHAN LOKAL</span><i>✦</i><span aria-hidden="true">RENYAH POLL</span><i aria-hidden="true">✦</i><span aria-hidden="true">RASA KEKINIAN</span><i aria-hidden="true">✦</i><span aria-hidden="true">BAHAN LOKAL</span><i aria-hidden="true">✦</i></div></div>
+    </section>
+    <section class="section products" id="produk">
+      <div class="container">
+        <div class="section-heading reveal"><div><p class="eyebrow dark"><span></span> Temukan favoritmu</p><h2>Satu gigitan,<br>banyak cerita.</h2></div><p>Dari gurih klasik sampai manis creamy, semuanya punya karakter. Klik foto untuk melihat lebih dekat.</p></div>
+        <div class="product-grid">
+          <article class="product-card reveal"><button class="image-button" type="button" data-lightbox="assets/balado.jpg" data-title="Singkong Balado"><img src="assets/balado.jpg" alt="Keripik singkong rasa balado KRIFIKS" width="2048" height="2048" loading="lazy"><span class="zoom-label">Lihat foto <b>↗</b></span></button><div class="product-info"><div><span class="tag">Best seller</span><h3>Singkong Balado</h3></div><span class="heat" aria-label="Pedas tingkat tiga">● ● ●</span></div></article>
+          <article class="product-card reveal"><button class="image-button" type="button" data-lightbox="assets/jagung_bakar.jpg" data-title="Singkong Jagung Bakar"><img src="assets/jagung_bakar.jpg" alt="Keripik singkong rasa jagung bakar KRIFIKS" width="2048" height="2048" loading="lazy"><span class="zoom-label">Lihat foto <b>↗</b></span></button><div class="product-info"><div><span class="tag">Smoky</span><h3>Jagung Bakar</h3></div></div></article>
+          <article class="product-card reveal"><button class="image-button" type="button" data-lightbox="assets/tiramisu.jpg" data-title="Glaze Tiramisu"><img src="assets/tiramisu.jpg" alt="Keripik dengan glaze tiramisu KRIFIKS" width="2048" height="2048" loading="lazy"><span class="zoom-label">Lihat foto <b>↗</b></span></button><div class="product-info"><div><span class="tag">Creamy</span><h3>Glaze Tiramisu</h3></div></div></article>
+          <article class="product-card reveal"><button class="image-button" type="button" data-lightbox="assets/matcha.jpg" data-title="Glaze Matcha"><img src="assets/matcha.jpg" alt="Keripik dengan glaze matcha KRIFIKS" width="2048" height="2048" loading="lazy"><span class="zoom-label">Lihat foto <b>↗</b></span></button><div class="product-info"><div><span class="tag">Earthy</span><h3>Glaze Matcha</h3></div></div></article>
+          <article class="product-card reveal"><button class="image-button" type="button" data-lightbox="assets/coklat.jpg" data-title="Glaze Coklat"><img src="assets/coklat.jpg" alt="Keripik dengan glaze coklat KRIFIKS" width="2048" height="2048" loading="lazy"><span class="zoom-label">Lihat foto <b>↗</b></span></button><div class="product-info"><div><span class="tag">Sweet</span><h3>Glaze Coklat</h3></div></div></article>
+          <article class="product-card reveal"><button class="image-button" type="button" data-lightbox="assets/pisang.jpg" data-title="Keripik Pisang"><img src="assets/pisang.jpg" alt="Keripik pisang KRIFIKS" width="2048" height="2048" loading="lazy"><span class="zoom-label">Lihat foto <b>↗</b></span></button><div class="product-info"><div><span class="tag">Klasik</span><h3>Keripik Pisang</h3></div></div></article>
+        </div>
+        <div class="center-action reveal"><a class="button button-dark" href="https://wa.me/6285275088405?text=Halo%20KRIFIKS%2C%20boleh%20minta%20katalog%20dan%20daftar%20harganya%3F" target="_blank" rel="noopener">Minta katalog &amp; harga <span aria-hidden="true">↗</span></a></div>
+      </div>
+    </section>
+    <section class="section benefits" id="keunggulan"><div class="container">
+      <div class="benefit-intro reveal"><p class="eyebrow"><span></span> Kenapa KRIFIKS?</p><h2>Beda dari<br>bungkus pertama.</h2><p>Kami serius soal rasa, bahan, dan pengalaman ngemil yang nggak ngebosenin.</p></div>
+      <div class="benefit-list">
+        <article class="benefit-card reveal"><span>01</span><div class="benefit-icon" aria-hidden="true">⌖</div><h3>Bahan lokal terpilih</h3><p>Bersumber dari petani lokal Tebing Tinggi dan dipilih untuk hasil terbaik.</p></article>
+        <article class="benefit-card reveal"><span>02</span><div class="benefit-icon" aria-hidden="true">✦</div><h3>Rasa yang berani</h3><p>Bumbu melimpah dan varian glaze unik yang bikin susah berhenti.</p></article>
+        <article class="benefit-card reveal"><span>03</span><div class="benefit-icon" aria-hidden="true">✓</div><h3>Renyah &amp; higienis</h3><p>Diproses dengan cermat, tanpa pengawet, lalu dikemas rapat agar tetap renyah.</p></article>
+      </div>
+    </div></section>
+    <section class="section story" id="cerita"><div class="container story-grid">
+      <div class="story-collage reveal"><img class="story-main" src="assets/sukun.jpg" alt="Keripik sukun KRIFIKS" width="2048" height="2048" loading="lazy"><img class="story-small" src="assets/balado_manis.jpg" alt="Keripik balado manis KRIFIKS" width="2048" height="2048" loading="lazy"><span>Dari<br><b>Tebing Tinggi</b></span></div>
+      <div class="story-copy reveal"><p class="eyebrow dark"><span></span> Cerita di balik rasa</p><h2>Lokal itu<br>punya banyak rasa.</h2><p>KRIFIKS lahir dari keinginan sederhana: membawa bahan pangan lokal naik kelas tanpa kehilangan rasa akrabnya.</p><p>Kami memadukan keripik yang familiar dengan rasa-rasa baru—supaya produk lokal bukan cuma jadi pilihan, tapi jadi kebanggaan.</p><blockquote>“Bukan sekadar ngemil. Ini cara asik menikmati hasil bumi lokal.”</blockquote></div>
+    </div></section>
+    <section class="section faq" id="faq"><div class="container faq-grid">
+      <div class="faq-title reveal"><p class="eyebrow dark"><span></span> Kamu tanya, kami jawab</p><h2>Yang sering<br>ditanyain.</h2><p>Belum ketemu jawabannya? Langsung chat kami lewat WhatsApp.</p></div>
+      <div class="accordion reveal">
+        <details name="faq"><summary>Apakah produk KRIFIKS halal?<span>+</span></summary><p>Semua bahan yang kami gunakan halal dan diproses secara higienis tanpa bahan non-halal.</p></details>
+        <details name="faq"><summary>Berapa lama keripik bisa tahan?<span>+</span></summary><p>Dalam kemasan yang belum dibuka, produk dapat bertahan sekitar 3–4 bulan. Setelah dibuka, tutup ziplock rapat dan habiskan dalam satu minggu untuk kerenyahan terbaik.</p></details>
+        <details name="faq"><summary>Bisa dikirim ke luar kota?<span>+</span></summary><p>Bisa. Kami melayani pengiriman ke seluruh Indonesia dengan kemasan pelindung agar produk sampai dengan aman.</p></details>
+        <details name="faq"><summary>Bisa pesan untuk hampers atau acara?<span>+</span></summary><p>Bisa banget. Hubungi kami untuk pilihan paket, jumlah pesanan, dan waktu pengerjaan yang sesuai kebutuhanmu.</p></details>
+      </div>
+    </div></section>
+    <section class="cta"><div class="cta-dots" aria-hidden="true"></div><div class="container cta-inner reveal"><p class="eyebrow"><span></span> Siap cobain?</p><h2>Stok camilanmu<br><em>jangan sampai kosong.</em></h2><p>Pilih rasa favorit, chat kami, lalu tunggu renyahnya sampai di depan pintu.</p><a class="button button-light" href="https://wa.me/6285275088405?text=Halo%20KRIFIKS%2C%20saya%20mau%20pesan.%20Boleh%20dibantu%3F" target="_blank" rel="noopener">Chat WhatsApp <span aria-hidden="true">↗</span></a></div></section>
+  </main>
+  <footer class="footer">
+    <div class="container footer-grid"><div><a class="brand footer-brand" href="#beranda"><b class="brand-mark" aria-hidden="true">K</b><span>KRIFIKS</span></a><p>Bukan keripik biasa.</p></div><div><p class="footer-label">Jelajahi</p><a href="#produk">Produk</a><a href="#keunggulan">Keunggulan</a><a href="#cerita">Cerita kami</a></div><div><p class="footer-label">Temukan kami</p><a href="https://www.instagram.com/krifiks.id" target="_blank" rel="noopener">Instagram ↗</a><a href="https://wa.me/6285275088405" target="_blank" rel="noopener">WhatsApp ↗</a><span>Tebing Tinggi, Sumatera Utara</span></div></div>
+    <div class="container footer-bottom"><span>© <span id="year"></span> KRIFIKS</span><span>Dibuat dengan rasa lokal.</span></div>
+  </footer>
+  <a class="whatsapp-float" href="https://wa.me/6285275088405?text=Halo%20KRIFIKS%2C%20saya%20mau%20tanya." target="_blank" rel="noopener" aria-label="Chat KRIFIKS di WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 3.5A11.8 11.8 0 0 0 12.1 0C5.6 0 .3 5.3.3 11.8c0 2.1.6 4.1 1.6 5.9L.2 24l6.5-1.7a11.8 11.8 0 0 0 5.4 1.4h.1c6.5 0 11.8-5.3 11.8-11.8 0-3.2-1.2-6.2-3.5-8.4Zm-8.4 18.2c-1.7 0-3.4-.5-4.9-1.3l-.4-.2-3.8 1 1-3.7-.2-.4a9.8 9.8 0 0 1-1.5-5.2A9.8 9.8 0 0 1 12.1 2c2.6 0 5.1 1 6.9 2.9a9.7 9.7 0 0 1 2.9 6.9 9.8 9.8 0 0 1-9.8 9.9Zm5.4-7.3c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.2-.7.2l-.9 1.1c-.2.2-.3.2-.6.1a7.9 7.9 0 0 1-3.9-3.4c-.3-.5.3-.5.8-1.6.1-.2 0-.4 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5H7.2c-.2 0-.6.1-.9.4-.3.4-1.2 1.2-1.2 2.9s1.2 3.3 1.4 3.5c.1.2 2.4 3.7 5.9 5.2 2.2.9 3.1 1 4.2.8 1.3-.2 1.8-.9 2.1-1.7.3-.8.3-1.4.2-1.6-.2-.2-.4-.3-.7-.4Z"/></svg></a>
+  <dialog class="lightbox" id="lightbox" aria-labelledby="lightbox-title"><button class="lightbox-close" type="button" aria-label="Tutup foto">×</button><img id="lightbox-image" src="assets/balado.jpg" alt=""><p id="lightbox-title"></p></dialog>
+  <script src="script.js"></script>
 </body>
 </html>
